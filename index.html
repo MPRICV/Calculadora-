@@ -3,284 +3,614 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Leilões</title>
+    <title>Calculadora de Leilões - Imóvel com Valor</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        * {
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header-top {
+            background: #1a365d;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
         }
+
         .header {
+            background: white;
+            padding: 30px;
             text-align: center;
-            background: #2c3e50;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
+            border-bottom: 3px solid #2563eb;
         }
+
+        .header h1 {
+            color: #1a365d;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header .subtitle {
+            color: #2563eb;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .header .description {
+            color: #666;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            padding: 40px;
+            background: #fafafa;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #1a365d;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .section-content {
+            padding: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
         .form-group {
             margin-bottom: 20px;
         }
-        label {
+
+        .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a365d;
+            font-size: 14px;
         }
-        input, select {
+
+        .form-group input,
+        .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            padding: 12px 15px;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
             font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
         }
-        .row {
-            display: flex;
-            gap: 20px;
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-        .col {
-            flex: 1;
-        }
+
         .checkbox-group {
-            margin: 20px 0;
+            display: grid;
+            gap: 15px;
         }
+
         .checkbox-item {
-            margin: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
         }
-        .checkbox-item input {
-            width: auto;
-            margin-right: 10px;
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #2563eb;
         }
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 500;
+            color: #374151;
             cursor: pointer;
+        }
+
+        .calculate-btn {
             width: 100%;
-            margin: 20px 0;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .resultado {
-            background: #1e3c72;
+            padding: 18px;
+            background: #2563eb;
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 30px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calculate-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .resultado {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            margin-top: 30px;
             display: none;
         }
+
         .resultado.show {
             display: block;
         }
+
+        .resultado-header {
+            background: #1a365d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .resultado-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .resultado-content {
+            padding: 25px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .resultado-grid {
+            display: grid;
+            gap: 15px;
+        }
+
         .resultado-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 15px;
         }
-        .alert {
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-weight: bold;
+
+        .resultado-item:last-child {
+            border-bottom: none;
         }
-        .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+
+        .resultado-item.total {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a365d;
+            margin-top: 15px;
+            border: 2px solid #2563eb;
         }
-        .alert-warning {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeaa7;
+
+        .resultado-item .label {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .resultado-item .value {
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .footer {
+            background: #1a365d;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer h4 {
+            margin-bottom: 10px;
+            color: #93c5fd;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #374151;
+        }
+
+        @media (max-width: 768px) {
+            .form-section {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="header-top">
+        📞 Entre em contato para assessoria personalizada em leilões de imóveis
+    </div>
+
     <div class="container">
-        <div class="header">
-            <h1>🏛️ Calculadora de Leilões</h1>
-            <p>Calcule seu orçamento de guerra para arrematação de imóveis</p>
-        </div>
+        <header class="header">
+            <h1>🏛️ Imóvel com Valor</h1>
+            <div class="subtitle">Calculadora de Orçamento de Guerra</div>
+            <div class="description">
+                Assessoria em arrematação de leilões - Análise personalizada e técnica para investimentos seguros
+            </div>
+        </header>
 
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label>Valor de Arrematação (R$)</label>
-                    <input type="number" id="valorArrematacao" placeholder="500000">
+        <div class="form-section">
+            <div class="section">
+                <div class="section-header">
+                    📊 Dados Principais do Investimento
+                </div>
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="valorArrematacao">Valor de Arrematação (R$)</label>
+                            <input type="number" id="valorArrematacao" placeholder="Ex: 500.000" step="0.01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="valorDisponivel">Capital Total Disponível (R$)</label>
+                            <input type="number" id="valorDisponivel" placeholder="Ex: 800.000" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="valorVenal">Valor Venal do Imóvel (R$)</label>
+                            <input type="number" id="valorVenal" placeholder="Para cálculo do ITBI" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cidade">Localização do Imóvel</label>
+                            <select id="cidade">
+                                <option value="curitiba">Curitiba - PR</option>
+                                <option value="saopaulo">São Paulo - SP</option>
+                                <option value="balneario">Balneário Camboriú - SC</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label>Valor Total Disponível (R$)</label>
-                    <input type="number" id="valorDisponivel" placeholder="800000">
+
+            <div class="section">
+                <div class="section-header">
+                    ⚙️ Configurações do Investimento
+                </div>
+                <div class="section-content">
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="temOrcamentoReservado">
+                            <label for="temOrcamentoReservado">
+                                Possuo orçamento específico reservado para este leilão<br>
+                                <small style="color: #6b7280;">(Não aplicar margem de segurança de 30%)</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="necessitaImissao">
+                            <label for="necessitaImissao">
+                                O imóvel necessitará de Imissão de Posse<br>
+                                <small style="color: #6b7280;">(Imóvel ocupado - custos adicionais com oficial de justiça)</small>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <button class="calculate-btn" onclick="calcularOrcamento()">
+                �� Calcular Orçamento de Guerra
+            </button>
+
+            <div id="resultado" class="resultado"></div>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label>Valor Venal do Imóvel (R$)</label>
-                    <input type="number" id="valorVenal" placeholder="450000">
-                </div>
+        <footer class="footer">
+            <h4>Imóvel com Valor - Assessoria em Leilões de Imóveis</h4>
+            <p>Encontre segurança para uma análise personalizada e técnica a respeito de leilões</p>
+            <p>Avaliações de viabilidade para dar lances e o suporte necessário para cada caso</p>
+            
+            <div class="contact-info">
+                <p>📧 contato@imovelcomvalor.com.br</p>
+                <p>📱 @imovelcomvalor</p>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label>Cidade do Imóvel</label>
-                    <select id="cidade">
-                        <option value="curitiba">Curitiba - PR</option>
-                        <option value="saopaulo">São Paulo - SP</option>
-                        <option value="balneario">Balneário Camboriú - SC</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="checkbox-group">
-            <div class="checkbox-item">
-                <input type="checkbox" id="temOrcamentoReservado">
-                <label for="temOrcamentoReservado">Possuo orçamento reservado (não aplicar desconto de 30%)</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="necessitaImissao">
-                <label for="necessitaImissao">Necessita Imissão de Posse</label>
-            </div>
-        </div>
-
-        <button class="btn" onclick="calcular()">🧮 Calcular Orçamento de Guerra</button>
-
-        <div id="resultado" class="resultado"></div>
+        </footer>
     </div>
 
     <script>
-        const taxas = {
-            curitiba: { funrejus: 0.005, oficial: 800, deposito: 3000, itbi: 0.02 },
-            saopaulo: { funrejus: 0.01, oficial: 1200, deposito: 5000, itbi: 0.03 },
-            balneario: { funrejus: 0.003, oficial: 600, deposito: 2500, itbi: 0.025 }
+        const taxasPorCidade = {
+            curitiba: {
+                nome: 'Curitiba - PR',
+                funrejus: 0.005,
+                oficialJustica: 800,
+                depositoJudicial: 3000,
+                itbiAliquota: 0.02
+            },
+            saopaulo: {
+                nome: 'São Paulo - SP',
+                funrejus: 0.01,
+                oficialJustica: 1200,
+                depositoJudicial: 5000,
+                itbiAliquota: 0.03
+            },
+            balneario: {
+                nome: 'Balneário Camboriú - SC',
+                funrejus: 0.003,
+                oficialJustica: 600,
+                depositoJudicial: 2500,
+                itbiAliquota: 0.025
+            }
         };
 
-        function formatMoney(value) {
+        const taxasFixas = {
+            leiloeiro: 0.05,
+            assessoria: 0.05,
+            escritura: 1500,
+            registro: 800,
+            baixaPenhora: 600,
+            reservaSeguranca: 0.30
+        };
+
+        function formatarMoeda(valor) {
             return new Intl.NumberFormat('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
-            }).format(value);
+            }).format(valor);
         }
 
-        function calcular() {
+        function calcularOrcamento() {
             const valorArrematacao = parseFloat(document.getElementById('valorArrematacao').value) || 0;
             const valorDisponivel = parseFloat(document.getElementById('valorDisponivel').value) || 0;
             const valorVenal = parseFloat(document.getElementById('valorVenal').value) || valorArrematacao;
             const cidade = document.getElementById('cidade').value;
-            const temReserva = document.getElementById('temOrcamentoReservado').checked;
-            const precisaImissao = document.getElementById('necessitaImissao').checked;
+            const temOrcamentoReservado = document.getElementById('temOrcamentoReservado').checked;
+            const necessitaImissao = document.getElementById('necessitaImissao').checked;
 
-            if (valorArrematacao <= 0 || valorDisponivel <= 0) {
-                alert('Por favor, preencha todos os campos obrigatórios!');
+            if (valorArrematacao <= 0) {
+                alert('Por favor, informe o valor de arrematação');
                 return;
             }
 
-            const taxaCidade = taxas[cidade];
-            
-            // Cálculos
-            const leiloeiro = valorArrematacao * 0.05;
-            const assessoria = valorArrematacao * 0.05;
-            const escritura = 1500;
-            const registro = 800;
-            const baixaPenhora = 600;
-            const itbi = valorVenal * taxaCidade.itbi;
-            const funrejus = valorArrematacao * taxaCidade.funrejus;
-            const imissao = precisaImissao ? (taxaCidade.oficial + taxaCidade.deposito) : 0;
+            if (valorDisponivel <= 0) {
+                alert('Por favor, informe o capital total disponível');
+                return;
+            }
 
-            const custosTotais = leiloeiro + assessoria + escritura + registro + baixaPenhora + itbi + funrejus + imissao;
+            const taxasCidade = taxasPorCidade[cidade];
+
+            // Cálculos dos custos
+            const custoLeiloeiro = valorArrematacao * taxasFixas.leiloeiro;
+            const custoAssessoria = valorArrematacao * taxasFixas.assessoria;
+            const custoEscritura = taxasFixas.escritura;
+            const custoRegistro = taxasFixas.registro;
+            const custoBaixaPenhora = taxasFixas.baixaPenhora;
+            const custoITBI = valorVenal * taxasCidade.itbiAliquota;
+            const custoFunrejus = valorArrematacao * taxasCidade.funrejus;
+            
+            let custoImissaoPosse = 0;
+            if (necessitaImissao) {
+                custoImissaoPosse = taxasCidade.oficialJustica + taxasCidade.depositoJudicial;
+            }
+
+            const custosTotais = custoLeiloeiro + custoAssessoria + custoEscritura + 
+                                custoRegistro + custoBaixaPenhora + custoITBI + 
+                                custoFunrejus + custoImissaoPosse;
+
             const orcamentoGuerra = valorArrematacao + custosTotais;
-            
-            const valorInvestimento = temReserva ? valorDisponivel : valorDisponivel * 0.7;
-            const diferenca = valorInvestimento - orcamentoGuerra;
-            const viavel = diferenca >= 0;
 
-            // Mostrar resultado
-            const resultDiv = document.getElementById('resultado');
-            resultDiv.innerHTML = `
-                <h3>📊 Resultado do Orçamento de Guerra</h3>
-                
-                <div class="alert ${viavel ? 'alert-success' : 'alert-warning'}">
-                    ${viavel ? '✅ INVESTIMENTO VIÁVEL!' : '⚠️ INVESTIMENTO DE ALTO RISCO!'}
+            let valorDisponivelInvestimento = valorDisponivel;
+            if (!temOrcamentoReservado) {
+                valorDisponivelInvestimento = valorDisponivel * (1 - taxasFixas.reservaSeguranca);
+            }
+
+            const isViavel = orcamentoGuerra <= valorDisponivelInvestimento;
+            const diferenca = valorDisponivelInvestimento - orcamentoGuerra;
+
+            exibirResultado({
+                valorArrematacao,
+                custoLeiloeiro,
+                custoAssessoria,
+                custoEscritura,
+                custoRegistro,
+                custoBaixaPenhora,
+                custoITBI,
+                custoFunrejus,
+                custoImissaoPosse,
+                custosTotais,
+                orcamentoGuerra,
+                valorDisponivelInvestimento,
+                isViavel,
+                diferenca,
+                cidade: taxasCidade.nome,
+                necessitaImissao
+            });
+        }
+
+        function exibirResultado(dados) {
+            const resultadoDiv = document.getElementById('resultado');
+            
+            let html = `
+                <div class="resultado-header">
+                    <h3>📊 Análise Completa do Orçamento de Guerra</h3>
+                    <p>Relatório detalhado para ${dados.cidade}</p>
                 </div>
                 
-                <div class="resultado-item">
-                    <span>💰 Valor de Arrematação:</span>
-                    <span>${formatMoney(valorArrematacao)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>🏛️ Taxa do Leiloeiro (5%):</span>
-                    <span>${formatMoney(leiloeiro)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>👨‍💼 Assessoria (5%):</span>
-                    <span>${formatMoney(assessoria)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>📄 Taxa de Escritura:</span>
-                    <span>${formatMoney(escritura)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>📋 Taxa de Registro:</span>
-                    <span>${formatMoney(registro)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>🔓 Baixa Penhora:</span>
-                    <span>${formatMoney(baixaPenhora)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>🏢 ITBI:</span>
-                    <span>${formatMoney(itbi)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>⚖️ FUNREJUS:</span>
-                    <span>${formatMoney(funrejus)}</span>
-                </div>
-                ${imissao > 0 ? `
-                <div class="resultado-item">
-                    <span>🏠 Imissão de Posse:</span>
-                    <span>${formatMoney(imissao)}</span>
-                </div>
-                ` : ''}
-                <div class="resultado-item">
-                    <span><strong>🎯 ORÇAMENTO DE GUERRA TOTAL:</strong></span>
-                    <span><strong>${formatMoney(orcamentoGuerra)}</strong></span>
-                </div>
-                <div class="resultado-item">
-                    <span>�� Valor Disponível p/ Investimento:</span>
-                    <span>${formatMoney(valorInvestimento)}</span>
-                </div>
-                <div class="resultado-item">
-                    <span style="color: ${diferenca >= 0 ? '#4CAF50' : '#f44336'}">
-                        ${diferenca >= 0 ? '💚 Sobra de Capital:' : '🔴 Déficit de Capital:'}
-                    </span>
-                    <span style="color: ${diferenca >= 0 ? '#4CAF50' : '#f44336'}">
-                        ${formatMoney(Math.abs(diferenca))}
-                    </span>
+                <div class="resultado-content">
+                    ${dados.isViavel ? 
+                        '<div class="alert alert-success">✅ INVESTIMENTO VIÁVEL - Dentro dos parâmetros de segurança!</div>' : 
+                        '<div class="alert alert-warning">⚠️ INVESTIMENTO DE ALTO RISCO - Requer análise adicional!</div>'
+                    }
+                    
+                    <div class="resultado-grid">
+                        <div class="resultado-item">
+                            <span class="label">💰 Valor de Arrematação:</span>
+                            <span class="value">${formatarMoeda(dados.valorArrematacao)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">🏛️ Taxa do Leiloeiro (5%):</span>
+                            <span class="value">${formatarMoeda(dados.custoLeiloeiro)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">👨‍💼 Assessoria Especializada (5%):</span>
+                            <span class="value">${formatarMoeda(dados.custoAssessoria)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">📄 Taxa de Escritura:</span>
+                            <span class="value">${formatarMoeda(dados.custoEscritura)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">📋 Taxa de Registro:</span>
+                            <span class="value">${formatarMoeda(dados.custoRegistro)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">🔓 Baixa Penhora Matrícula:</span>
+                            <span class="value">${formatarMoeda(dados.custoBaixaPenhora)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">🏢 ITBI (Imposto de Transmissão):</span>
+                            <span class="value">${formatarMoeda(dados.custoITBI)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">⚖️ FUNREJUS:</span>
+                            <span class="value">${formatarMoeda(dados.custoFunrejus)}</span>
+                        </div>
+                        
+                        ${dados.custoImissaoPosse > 0 ? `
+                        <div class="resultado-item">
+                            <span class="label">🏠 Imissão de Posse:</span>
+                            <span class="value">${formatarMoeda(dados.custoImissaoPosse)}</span>
+                        </div>
+                        ` : ''}
+                        
+                        <div class="resultado-item">
+                            <span class="label">💼 Total de Custos Adicionais:</span>
+                            <span class="value">${formatarMoeda(dados.custosTotais)}</span>
+                        </div>
+                        
+                        <div class="resultado-item total">
+                            <span class="label">🎯 ORÇAMENTO DE GUERRA TOTAL:</span>
+                            <span class="value">${formatarMoeda(dados.orcamentoGuerra)}</span>
+                        </div>
+                        
+                        <div class="resultado-item">
+                            <span class="label">💳 Capital Disponível p/ Investimento:</span>
+                            <span class="value">${formatarMoeda(dados.valorDisponivelInvestimento)}</span>
+                        </div>
+                        
+                        <div class="resultado-item total">
+                            <span class="label" style="color: ${dados.diferenca >= 0 ? '#166534' : '#dc2626'}">
+                                ${dados.diferenca >= 0 ? '💚 Reserva de Segurança:' : '🔴 Déficit de Capital:'}
+                            </span>
+                            <span class="value" style="color: ${dados.diferenca >= 0 ? '#166534' : '#dc2626'}">
+                                ${formatarMoeda(Math.abs(dados.diferenca))}
+                            </span>
+                        </div>
+                    </div>
                 </div>
             `;
-            
-            resultDiv.classList.add('show');
-            resultDiv.scrollIntoView({ behavior: 'smooth' });
+
+            resultadoDiv.innerHTML = html;
+            resultadoDiv.classList.add('show');
+            resultadoDiv.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
