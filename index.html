@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Investimentos - Imóvel com Valor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,40 +13,47 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 20px;
         }
 
         .container {
-            max-width: 900px;
-            margin: 20px auto;
+            max-width: 1000px;
+            margin: 0 auto;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #1e40af, #3730a3);
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
         }
 
         .valor-maximo {
-            background: linear-gradient(135deg, #059669, #047857);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
-            margin: 20px;
-            border-radius: 10px;
+            margin: 30px;
+            border-radius: 15px;
             display: none;
         }
 
@@ -53,144 +61,365 @@
             display: block;
         }
 
+        .valor-maximo h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
         .valor-maximo .valor {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 15px 0;
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0;
         }
 
         .form-section {
-            padding: 30px;
+            padding: 40px;
+        }
+
+        .section {
+            background: #f8fafc;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-header {
+            background: #1e293b;
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .section-header i {
+            margin-right: 10px;
+        }
+
+        .section-content {
+            padding: 25px;
+            background: white;
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-bottom: 20px;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
             font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #3b82f6;
         }
 
         .checkbox-group {
-            margin: 20px 0;
+            display: grid;
+            gap: 15px;
         }
 
         .checkbox-item {
             display: flex;
-            align-items: center;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 5px;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
         .checkbox-item input {
-            width: auto;
-            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #3b82f6;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        .checkbox-item small {
+            display: block;
+            color: #6b7280;
+            font-size: 12px;
+            margin-top: 4px;
         }
 
         .calculate-btn {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            padding: 18px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1.1rem;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            margin: 20px 0;
+            transition: all 0.3s ease;
+            margin: 30px 0;
         }
 
         .calculate-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
 
         .resultado {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
             display: none;
+            border: 1px solid #e2e8f0;
         }
 
         .resultado.show {
             display: block;
         }
 
+        .resultado h3 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
         .resultado-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #ddd;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .resultado-item:last-child {
             border-bottom: none;
-            font-weight: bold;
-            background: #e3f2fd;
-            padding: 12px;
-            border-radius: 5px;
-            margin-top: 10px;
+            font-weight: 700;
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
         }
 
         .alert {
             padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
             text-align: center;
         }
 
         .alert-success {
-            background: #d4edda;
-            color: #155724;
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
         }
 
         .alert-warning {
-            background: #fff3cd;
-            color: #856404;
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #f59e0b;
+        }
+
+        .analises-pos {
+            background: #f1f5f9;
+            padding: 40px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .analises-pos.show {
+            display: block;
+        }
+
+        .analises-pos h2 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .cenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .cenario-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e2e8f0;
+        }
+
+        .cenario-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cenario-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+            color: white;
+        }
+
+        .cenario-venda .cenario-icon {
+            background: #ef4444;
+        }
+
+        .cenario-locacao .cenario-icon {
+            background: #3b82f6;
+        }
+
+        .cenario-airbnb .cenario-icon {
+            background: #8b5cf6;
+        }
+
+        .cenario-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .cenario-subtitle {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .roi-highlight {
+            background: #ecfdf5;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #10b981;
+        }
+
+        .roi-highlight .metric-label {
+            color: #065f46;
+            font-weight: 600;
+        }
+
+        .roi-highlight .metric-value {
+            color: #065f46;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .recomendacoes {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .recomendacoes h3 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .recomendacao-item {
+            background: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .recomendacao-item h4 {
+            color: #1e40af;
+            margin-bottom: 8px;
         }
 
         .footer {
             background: #1e293b;
             color: white;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
+        }
+
+        .footer h4 {
+            margin-bottom: 10px;
         }
 
         @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
             }
-            .container {
-                margin: 10px;
+            
+            .form-section {
+                padding: 25px;
+            }
+
+            .valor-maximo .valor {
+                font-size: 2.2rem;
+            }
+
+            .cenarios-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -198,206 +427,624 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏛️ IMÓVEL COM VALOR</h1>
-            <p>Calculadora de Investimentos em Leilões</p>
+            <h1><i class="fas fa-building"></i> IMÓVEL COM VALOR</h1>
+            <p>Calculadora Completa de Investimentos em Leilões</p>
         </div>
 
         <div id="valorMaximo" class="valor-maximo">
-            <h3>🎯 Valor Máximo Recomendado</h3>
+            <h3><i class="fas fa-target"></i> Valor Máximo Recomendado</h3>
             <div id="valorMaximoValor" class="valor">R$ 0,00</div>
-            <p>Este é o valor limite para seu lance</p>
+            <p>Este é o valor limite recomendado para seu lance</p>
         </div>
 
         <div class="form-section">
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="valorArrematacao">Valor de Arrematação (R$)</label>
-                    <input type="number" id="valorArrematacao" placeholder="500000">
+            <!-- Dados Financeiros -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-chart-line"></i> Dados Financeiros
                 </div>
-                
-                <div class="form-group">
-                    <label for="valorDisponivel">Capital Disponível (R$)</label>
-                    <input type="number" id="valorDisponivel" placeholder="800000">
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="valorArrematacao">Valor de Arrematação (R$)</label>
+                            <input type="number" id="valorArrematacao" placeholder="500.000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="valorDisponivel">Capital Disponível (R$)</label>
+                            <input type="number" id="valorDisponivel" placeholder="800.000">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="valorVenal">Valor Venal (R$)</label>
+                            <input type="number" id="valorVenal" placeholder="450.000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="valorMercado">Valor de Mercado (R$)</label>
+                            <input type="number" id="valorMercado" placeholder="650.000">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="valorVenal">Valor Venal (R$)</label>
-                    <input type="number" id="valorVenal" placeholder="450000">
+            <!-- Características do Imóvel -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-home"></i> Características do Imóvel
                 </div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="tipoImovel">Tipo de Imóvel</label>
+                            <select id="tipoImovel">
+                                <option value="apartamento">Apartamento</option>
+                                <option value="casa">Casa</option>
+                                <option value="terreno">Terreno</option>
+                                <option value="comercial">Comercial</option>
+                            </select>
+                        </div>
 
-                <div class="form-group">
-                    <label for="cidade">Cidade</label>
-                    <select id="cidade">
-                        <option value="curitiba">Curitiba - PR</option>
-                        <option value="saopaulo">São Paulo - SP</option>
-                        <option value="balneario">Balneário Camboriú - SC</option>
-                    </select>
+                        <div class="form-group">
+                            <label for="areaPrivativa">Área Privativa (m²)</label>
+                            <input type="number" id="areaPrivativa" placeholder="85">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="quartos">Quartos</label>
+                            <input type="number" id="quartos" placeholder="3">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="banheiros">Banheiros</label>
+                            <input type="number" id="banheiros" placeholder="2">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="vagas">Vagas de Garagem</label>
+                            <input type="number" id="vagas" placeholder="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estadoConservacao">Estado de Conservação</label>
+                            <select id="estadoConservacao">
+                                <option value="excelente">Excelente</option>
+                                <option value="bom">Bom</option>
+                                <option value="regular">Regular</option>
+                                <option value="necessita-reforma">Necessita Reforma</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="taxaCondominio">Condomínio (R$/mês)</label>
-                    <input type="number" id="taxaCondominio" placeholder="450">
+            <!-- Localização -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-map-marker-alt"></i> Localização
                 </div>
-                
-                <div class="form-group">
-                    <label for="iptuMensal">IPTU (R$/mês)</label>
-                    <input type="number" id="iptuMensal" placeholder="280">
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <select id="cidade">
+                                <option value="curitiba">Curitiba - PR</option>
+                                <option value="saopaulo">São Paulo - SP</option>
+                                <option value="balneario">Balneário Camboriú - SC</option>
+                                <option value="florianopolis">Florianópolis - SC</option>
+                                <option value="riodejaneiro">Rio de Janeiro - RJ</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" placeholder="Centro">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="precoM2Regiao">Preço por m² na Região (R$)</label>
+                            <input type="number" id="precoM2Regiao" placeholder="8500">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aluguelM2Regiao">Aluguel por m² (R$)</label>
+                            <input type="number" id="aluguelM2Regiao" placeholder="35">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="temOrcamentoReservado">
-                    <label for="temOrcamentoReservado">Tenho orçamento reservado (sem margem 30%)</label>
+            <!-- Custos -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-calculator"></i> Custos Mensais
                 </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="necessitaImissao">
-                    <label for="necessitaImissao">Necessita Imissão de Posse</label>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="taxaCondominio">Condomínio (R$/mês)</label>
+                            <input type="number" id="taxaCondominio" placeholder="450">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="iptuMensal">IPTU (R$/mês)</label>
+                            <input type="number" id="iptuMensal" placeholder="280">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="custoReforma">Custo de Reforma (R$)</label>
+                            <input type="number" id="custoReforma" placeholder="25000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tempoReforma">Tempo de Reforma (meses)</label>
+                            <input type="number" id="tempoReforma" placeholder="3">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <button class="calculate-btn" onclick="calcular()">
-                🧮 Calcular Investimento
+            <!-- Configurações -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-cogs"></i> Configurações
+                </div>
+                <div class="section-content">
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="temOrcamentoReservado">
+                            <label for="temOrcamentoReservado">
+                                Tenho orçamento reservado específico
+                                <small>Não aplicar margem de segurança de 30%</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="necessitaImissao">
+                            <label for="necessitaImissao">
+                                Necessita Imissão de Posse
+                                <small>Imóvel ocupado</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="potencialTuristico">
+                            <label for="potencialTuristico">
+                                Potencial turístico
+                                <small>Adequado para Airbnb</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="potencialComercial">
+                            <label for="potencialComercial">
+                                Potencial comercial
+                                <small>Permite uso comercial</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calcularInvestimento()">
+                <i class="fas fa-calculator"></i> Calcular Análise Completa
             </button>
 
             <div id="resultado" class="resultado"></div>
         </div>
-
-        <div class="footer">
-            <h4>Imóvel com Valor</h4>
-            <p>📧 contato@imovelcomvalor.com.br | 📱 @imovelcomvalor</p>
-        </div>
     </div>
 
+    <!-- Análises Pós-Arrematação -->
+    <div id="analisesPosArrematacao" class="analises-pos">
+        <h2><i class="fas fa-chart-bar"></i> Análises Pós-Arrematação</h2>
+        
+        <div id="cenariosGrid" class="cenarios-grid"></div>
+        
+        <div id="recomendacoes" class="recomendacoes"></div>
+    </div>
+
+    <footer class="footer">
+        <h4>Imóvel com Valor</h4>
+        <p>📧 contato@imovelcomvalor.com.br | 📱 @imovelcomvalor</p>
+        <p>© 2024 - Assessoria especializada em leilões de imóveis</p>
+    </footer>
+
     <script>
-        const taxas = {
-            curitiba: { funrejus: 0.005, oficial: 800, deposito: 3000, itbi: 0.02 },
-            saopaulo: { funrejus: 0.01, oficial: 1200, deposito: 5000, itbi: 0.03 },
-            balneario: { funrejus: 0.003, oficial: 600, deposito: 2500, itbi: 0.025 }
+        const taxasPorCidade = {
+            curitiba: {
+                nome: 'Curitiba - PR',
+                funrejus: 0.005,
+                oficialJustica: 800,
+                depositoJudicial: 3000,
+                itbiAliquota: 0.02,
+                potencialTuristico: 0.6,
+                demandaLocacao: 0.85,
+                valorM2Medio: 8000
+            },
+            saopaulo: {
+                nome: 'São Paulo - SP',
+                funrejus: 0.01,
+                oficialJustica: 1200,
+                depositoJudicial: 5000,
+                itbiAliquota: 0.03,
+                potencialTuristico: 0.8,
+                demandaLocacao: 0.95,
+                valorM2Medio: 12000
+            },
+            balneario: {
+                nome: 'Balneário Camboriú - SC',
+                funrejus: 0.003,
+                oficialJustica: 600,
+                depositoJudicial: 2500,
+                itbiAliquota: 0.025,
+                potencialTuristico: 0.95,
+                demandaLocacao: 0.75,
+                valorM2Medio: 10000
+            },
+            florianopolis: {
+                nome: 'Florianópolis - SC',
+                funrejus: 0.003,
+                oficialJustica: 600,
+                depositoJudicial: 2500,
+                itbiAliquota: 0.025,
+                potencialTuristico: 0.9,
+                demandaLocacao: 0.8,
+                valorM2Medio: 9500
+            },
+            riodejaneiro: {
+                nome: 'Rio de Janeiro - RJ',
+                funrejus: 0.01,
+                oficialJustica: 1000,
+                depositoJudicial: 4000,
+                itbiAliquota: 0.03,
+                potencialTuristico: 0.95,
+                demandaLocacao: 0.9,
+                valorM2Medio: 11000
+            }
         };
 
-        function formatMoney(value) {
+        function formatarMoeda(valor) {
             return new Intl.NumberFormat('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
-            }).format(value);
+            }).format(valor);
         }
 
-        function calcular() {
+        function formatarPorcentagem(valor) {
+            return (valor * 100).toFixed(1) + '%';
+        }
+
+        function calcularInvestimento() {
+            // Obter valores
             const valorArrematacao = parseFloat(document.getElementById('valorArrematacao').value) || 0;
             const valorDisponivel = parseFloat(document.getElementById('valorDisponivel').value) || 0;
             const valorVenal = parseFloat(document.getElementById('valorVenal').value) || valorArrematacao;
+            const valorMercado = parseFloat(document.getElementById('valorMercado').value) || valorArrematacao * 1.2;
             const cidade = document.getElementById('cidade').value;
-            const temReserva = document.getElementById('temOrcamentoReservado').checked;
-            const precisaImissao = document.getElementById('necessitaImissao').checked;
+            const temOrcamentoReservado = document.getElementById('temOrcamentoReservado').checked;
+            const necessitaImissao = document.getElementById('necessitaImissao').checked;
             const taxaCondominio = parseFloat(document.getElementById('taxaCondominio').value) || 0;
             const iptuMensal = parseFloat(document.getElementById('iptuMensal').value) || 0;
+            const custoReforma = parseFloat(document.getElementById('custoReforma').value) || 0;
+            const areaPrivativa = parseFloat(document.getElementById('areaPrivativa').value) || 80;
+            const aluguelM2Regiao = parseFloat(document.getElementById('aluguelM2Regiao').value) || 30;
+            const potencialTuristico = document.getElementById('potencialTuristico').checked;
 
             if (valorArrematacao <= 0 || valorDisponivel <= 0) {
-                alert('Preencha o valor de arrematação e capital disponível!');
+                alert('Preencha pelo menos o valor de arrematação e capital disponível!');
                 return;
             }
 
-            const taxaCidade = taxas[cidade];
-            
-            // Cálculos
+            const taxasCidade = taxasPorCidade[cidade];
+
+            // Cálculos básicos
             const leiloeiro = valorArrematacao * 0.05;
             const assessoria = valorArrematacao * 0.05;
             const escritura = 1500;
             const registro = 800;
             const baixaPenhora = 600;
-            const itbi = valorVenal * taxaCidade.itbi;
-            const funrejus = valorArrematacao * taxaCidade.funrejus;
-            const imissao = precisaImissao ? (taxaCidade.oficial + taxaCidade.deposito) : 0;
+            const itbi = valorVenal * taxasCidade.itbiAliquota;
+            const funrejus = valorArrematacao * taxasCidade.funrejus;
+            const imissao = necessitaImissao ? (taxasCidade.oficialJustica + taxasCidade.depositoJudicial) : 0;
 
-            const custosTotais = leiloeiro + assessoria + escritura + registro + baixaPenhora + itbi + funrejus + imissao;
-            const orcamentoTotal = valorArrematacao + custosTotais;
+            const custosTotais = leiloeiro + assessoria + escritura + registro + baixaPenhora + itbi + funrejus + imissao + custoReforma;
+            const investimentoTotal = valorArrematacao + custosTotais;
             
-            const valorInvestimento = temReserva ? valorDisponivel : valorDisponivel * 0.7;
-            const diferenca = valorInvestimento - orcamentoTotal;
+            const valorInvestimento = temOrcamentoReservado ? valorDisponivel : valorDisponivel * 0.7;
+            const diferenca = valorInvestimento - investimentoTotal;
             const viavel = diferenca >= 0;
 
-            // Calcular valor máximo
-            const custosFixos = assessoria + escritura + registro + baixaPenhora + imissao;
-            const valorMaximo = Math.max(0, (valorInvestimento - custosFixos) / 1.15);
+            // Calcular valor máximo recomendado
+            const custosFixos = assessoria + escritura + registro + baixaPenhora + imissao + custoReforma;
+            const valorMaximo = Math.max(0, (valorInvestimento - custosFixos) / 1.15); // 15% de margem
 
             // Mostrar valor máximo
-            document.getElementById('valorMaximoValor').textContent = formatMoney(valorMaximo);
+            document.getElementById('valorMaximoValor').textContent = formatarMoeda(valorMaximo);
             document.getElementById('valorMaximo').classList.add('show');
 
             // Mostrar resultado
+            mostrarResultado({
+                valorArrematacao,
+                leiloeiro,
+                assessoria,
+                escritura,
+                registro,
+                baixaPenhora,
+                itbi,
+                funrejus,
+                imissao,
+                custoReforma,
+                custosTotais,
+                investimentoTotal,
+                valorInvestimento,
+                diferenca,
+                viavel,
+                taxaCondominio,
+                iptuMensal,
+                cidade: taxasCidade.nome
+            });
+
+            // Mostrar análises pós-arrematação
+            mostrarAnalisesPosArrematacao({
+                valorMercado,
+                investimentoTotal,
+                areaPrivativa,
+                aluguelM2Regiao,
+                taxaCondominio,
+                iptuMensal,
+                potencialTuristico,
+                cidade: taxasCidade
+            });
+        }
+
+        function mostrarResultado(dados) {
             const resultDiv = document.getElementById('resultado');
+            
             resultDiv.innerHTML = `
-                <div class="alert ${viavel ? 'alert-success' : 'alert-warning'}">
-                    ${viavel ? '✅ INVESTIMENTO VIÁVEL!' : '⚠️ INVESTIMENTO DE ALTO RISCO!'}
+                <div class="alert ${dados.viavel ? 'alert-success' : 'alert-warning'}">
+                    ${dados.viavel ? '✅ INVESTIMENTO VIÁVEL!' : '⚠️ INVESTIMENTO DE ALTO RISCO!'}
                 </div>
                 
-                <h3>📊 Análise Detalhada</h3>
+                <h3><i class="fas fa-chart-bar"></i> Análise Detalhada - ${dados.cidade}</h3>
                 
                 <div class="resultado-item">
                     <span>💰 Valor de Arrematação:</span>
-                    <span>${formatMoney(valorArrematacao)}</span>
+                    <span>${formatarMoeda(dados.valorArrematacao)}</span>
                 </div>
                 <div class="resultado-item">
                     <span>🏛️ Taxa do Leiloeiro (5%):</span>
-                    <span>${formatMoney(leiloeiro)}</span>
+                    <span>${formatarMoeda(dados.leiloeiro)}</span>
                 </div>
                 <div class="resultado-item">
                     <span>👨‍💼 Assessoria (5%):</span>
-                    <span>${formatMoney(assessoria)}</span>
+                    <span>${formatarMoeda(dados.assessoria)}</span>
                 </div>
                 <div class="resultado-item">
                     <span>📄 Escritura + Registro:</span>
-                    <span>${formatMoney(escritura + registro)}</span>
+                    <span>${formatarMoeda(dados.escritura + dados.registro)}</span>
                 </div>
                 <div class="resultado-item">
                     <span>🔓 Baixa Penhora:</span>
-                    <span>${formatMoney(baixaPenhora)}</span>
+                    <span>${formatarMoeda(dados.baixaPenhora)}</span>
                 </div>
                 <div class="resultado-item">
                     <span>🏢 ITBI:</span>
-                    <span>${formatMoney(itbi)}</span>
+                    <span>${formatarMoeda(dados.itbi)}</span>
                 </div>
                 <div class="resultado-item">
                     <span>⚖️ FUNREJUS:</span>
-                    <span>${formatMoney(funrejus)}</span>
+                    <span>${formatarMoeda(dados.funrejus)}</span>
                 </div>
-                ${imissao > 0 ? `
+                ${dados.imissao > 0 ? `
                 <div class="resultado-item">
                     <span>🏠 Imissão de Posse:</span>
-                    <span>${formatMoney(imissao)}</span>
+                    <span>${formatarMoeda(dados.imissao)}</span>
                 </div>
                 ` : ''}
-                ${(taxaCondominio > 0 || iptuMensal > 0) ? `
+                ${dados.custoReforma > 0 ? `
                 <div class="resultado-item">
-                    <span>📅 Custos Mensais:</span>
-                    <span>${formatMoney(taxaCondominio + iptuMensal)}/mês</span>
+                    <span>🔨 Custo de Reforma:</span>
+                    <span>${formatarMoeda(dados.custoReforma)}</span>
                 </div>
                 ` : ''}
+                <div class="resultado-item">
+                    <span>💼 Total de Custos:</span>
+                    <span>${formatarMoeda(dados.custosTotais)}</span>
+                </div>
                 <div class="resultado-item">
                     <span><strong>🎯 INVESTIMENTO TOTAL:</strong></span>
-                    <span><strong>${formatMoney(orcamentoTotal)}</strong></span>
+                    <span><strong>${formatarMoeda(dados.investimentoTotal)}</strong></span>
                 </div>
                 <div class="resultado-item">
                     <span>💳 Capital Disponível:</span>
-                    <span>${formatMoney(valorInvestimento)}</span>
+                    <span>${formatarMoeda(dados.valorInvestimento)}</span>
                 </div>
                 <div class="resultado-item">
-                    <span style="color: ${diferenca >= 0 ? '#059669' : '#dc2626'}">
-                        ${diferenca >= 0 ? '💚 Sobra:' : '�� Déficit:'}
+                    <span style="color: ${dados.diferenca >= 0 ? '#059669' : '#dc2626'}">
+                        ${dados.diferenca >= 0 ? '💚 Sobra:' : '🔴 Déficit:'}
                     </span>
-                    <span style="color: ${diferenca >= 0 ? '#059669' : '#dc2626'}">
-                        ${formatMoney(Math.abs(diferenca))}
+                    <span style="color: ${dados.diferenca >= 0 ? '#059669' : '#dc2626'}">
+                        ${formatarMoeda(Math.abs(dados.diferenca))}
                     </span>
                 </div>
+                ${(dados.taxaCondominio > 0 || dados.iptuMensal > 0) ? `
+                <div class="resultado-item">
+                    <span>📅 Custos Mensais:</span>
+                    <span>${formatarMoeda(dados.taxaCondominio + dados.iptuMensal)}/mês</span>
+                </div>
+                ` : ''}
             `;
             
             resultDiv.classList.add('show');
-            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function mostrarAnalisesPosArrematacao(dados) {
+            // Cálculos para diferentes cenários
+            const aluguelMensal = dados.areaPrivativa * dados.aluguelM2Regiao;
+            const aluguelLiquido = aluguelMensal - dados.taxaCondominio - dados.iptuMensal;
+            const aluguelAnual = aluguelLiquido * 12;
+            const yieldLocacao = (aluguelAnual / dados.investimentoTotal) * 100;
+
+            const aluguelAirbnb = aluguelMensal * (dados.potencialTuristico ? 1.8 : 1.3);
+            const aluguelAirbnbLiquido = aluguelAirbnb * 0.88 - dados.taxaCondominio - dados.iptuMensal; // 12% taxa Airbnb
+            const yieldAirbnb = ((aluguelAirbnbLiquido * 12) / dados.investimentoTotal) * 100;
+
+            const lucroVenda = dados.valorMercado - dados.investimentoTotal;
+            const roiVenda = (lucroVenda / dados.investimentoTotal) * 100;
+
+            // Mostrar cenários
+            document.getElementById('cenariosGrid').innerHTML = `
+                <div class="cenario-card cenario-venda">
+                    <div class="cenario-header">
+                        <div class="cenario-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div>
+                            <div class="cenario-title">Venda Imediata</div>
+                            <div class="cenario-subtitle">Revenda após arrematação</div>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Valor de Venda:</span>
+                        <span class="metric-value">${formatarMoeda(dados.valorMercado)}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Investimento Total:</span>
+                        <span class="metric-value">${formatarMoeda(dados.investimentoTotal)}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Lucro Bruto:</span>
+                        <span class="metric-value">${formatarMoeda(lucroVenda)}</span>
+                    </div>
+                    <div class="roi-highlight">
+                        <div class="metric-item">
+                            <span class="metric-label">ROI:</span>
+                            <span class="metric-value">${roiVenda.toFixed(1)}%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cenario-card cenario-locacao">
+                    <div class="cenario-header">
+                        <div class="cenario-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div>
+                            <div class="cenario-title">Locação Tradicional</div>
+                            <div class="cenario-subtitle">Aluguel residencial</div>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Aluguel Mensal:</span>
+                        <span class="metric-value">${formatarMoeda(aluguelMensal)}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Líquido Mensal:</span>
+                        <span class="metric-value">${formatarMoeda(aluguelLiquido)}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Renda Anual:</span>
+                        <span class="metric-value">${formatarMoeda(aluguelAnual)}</span>
+                    </div>
+                    <div class="roi-highlight">
+                        <div class="metric-item">
+                            <span class="metric-label">Yield Anual:</span>
+                            <span class="metric-value">${yieldLocacao.toFixed(1)}%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cenario-card cenario-airbnb">
+                    <div class="cenario-header">
+                        <div class="cenario-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div>
+                            <div class="cenario-title">Airbnb / Short Stay</div>
+                            <div class="cenario-subtitle">Locação por temporada</div>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Receita Mensal:</span>
+                        <span class="metric-value">${formatarMoeda(aluguelAirbnb)}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Líquido Mensal:</span>
+                        <span class="metric-value">${formatarMoeda(aluguelAirbnbLiquido)}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Renda Anual:</span>
+                        <span class="metric-value">${formatarMoeda(aluguelAirbnbLiquido * 12)}</span>
+                    </div>
+                    <div class="roi-highlight">
+                        <div class="metric-item">
+                            <span class="metric-label">Yield Anual:</span>
+                            <span class="metric-value">${yieldAirbnb.toFixed(1)}%</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Recomendações
+            let melhorOpcao = 'venda';
+            let melhorRetorno = roiVenda;
+
+            if (yieldLocacao > melhorRetorno) {
+                melhorOpcao = 'locacao';
+                melhorRetorno = yieldLocacao;
+            }
+
+            if (yieldAirbnb > melhorRetorno) {
+                melhorOpcao = 'airbnb';
+                melhorRetorno = yieldAirbnb;
+            }
+
+            const recomendacoes = {
+                venda: {
+                    titulo: 'Venda Imediata',
+                    descricao: 'Recomendado para lucro rápido e baixo risco. Ideal se você busca liquidez imediata.'
+                },
+                locacao: {
+                    titulo: 'Locação Tradicional',
+                    descricao: 'Renda passiva estável com menor gestão. Ideal para investimento de longo prazo.'
+                },
+                airbnb: {
+                    titulo: 'Airbnb / Short Stay',
+                    descricao: 'Maior rentabilidade, mas requer gestão ativa. Ideal para localizações turísticas.'
+                }
+            };
+
+            document.getElementById('recomendacoes').innerHTML = `
+                <h3><i class="fas fa-lightbulb"></i> Recomendações Personalizadas</h3>
+                
+                <div class="recomendacao-item">
+                    <h4>🏆 Melhor Opção: ${recomendacoes[melhorOpcao].titulo}</h4>
+                    <p>${recomendacoes[melhorOpcao].descricao}</p>
+                    <p><strong>Retorno estimado: ${melhorRetorno.toFixed(1)}%</strong></p>
+                </div>
+
+                <div class="recomendacao-item">
+                    <h4>📊 Análise de Mercado</h4>
+                    <p>Com base na localização ${dados.cidade.nome}, o potencial turístico é ${dados.cidade.potencialTuristico > 0.8 ? 'alto' : dados.cidade.potencialTuristico > 0.6 ? 'médio' : 'baixo'} e a demanda por locação é ${dados.cidade.demandaLocacao > 0.9 ? 'muito alta' : dados.cidade.demandaLocacao > 0.8 ? 'alta' : 'média'}.</p>
+                </div>
+
+                <div class="recomendacao-item">
+                    <h4>⚠️ Considerações Importantes</h4>
+                    <p>• Valores são estimativas baseadas no mercado atual<br>
+                    • Considere custos de manutenção e vacância<br>
+                    • Para Airbnb, considere regulamentações locais<br>
+                    • Recomendamos análise detalhada com especialista</p>
+                </div>
+            `;
+
+            document.getElementById('analisesPosArrematacao').classList.add('show');
         }
     </script>
 </body>
