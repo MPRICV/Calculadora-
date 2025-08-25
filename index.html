@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Leilões - Imóvel com Valor</title>
+    <title>Calculadora Completa de Investimentos - Imóvel com Valor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,147 +14,279 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
             line-height: 1.6;
-        }
-
-        .header-top {
-            background: #1a365d;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
             min-height: 100vh;
         }
 
-        .header {
-            background: white;
-            padding: 30px;
+        /* Header Top Bar */
+        .header-top {
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+            color: white;
+            padding: 12px 0;
             text-align: center;
-            border-bottom: 3px solid #2563eb;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(30, 64, 175, 0.1);
         }
 
-        .header h1 {
-            color: #1a365d;
-            font-size: 2.2rem;
+        .header-top i {
+            margin-right: 8px;
+            color: #93c5fd;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 24px 24px;
+            overflow: hidden;
+        }
+
+        /* Modern Header */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .logo-icon i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .brand-name {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #1e293b;
+            letter-spacing: -0.025em;
+            margin: 0;
         }
 
-        .header .subtitle {
-            color: #2563eb;
-            font-size: 1.1rem;
+        .header-subtitle {
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 5px;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
 
-        .header .description {
-            color: #666;
-            font-size: 1rem;
+        .header-description {
+            font-size: 1.1rem;
+            color: #64748b;
             max-width: 600px;
             margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.7;
         }
 
-        .form-section {
+        /* Valor Máximo Destacado */
+        .valor-maximo-section {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
             padding: 40px;
+            margin: 30px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(5, 150, 105, 0.3);
+            display: none;
+        }
+
+        .valor-maximo-section.show {
+            display: block;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .valor-maximo-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .valor-maximo-valor {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .valor-maximo-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 50px 40px;
             background: #fafafa;
         }
 
         .section {
             background: white;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
+            margin-bottom: 32px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
             overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
 
         .section-header {
-            background: #1a365d;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             color: white;
-            padding: 15px 25px;
+            padding: 20px 28px;
             font-size: 1.1rem;
             font-weight: 600;
             display: flex;
             align-items: center;
+            letter-spacing: -0.01em;
         }
 
         .section-header i {
-            margin-right: 10px;
+            margin-right: 12px;
             font-size: 1.2rem;
+            color: #94a3b8;
         }
 
         .section-content {
-            padding: 25px;
+            padding: 32px 28px;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 24px;
+            margin-bottom: 24px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #1a365d;
+            color: #374151;
             font-size: 14px;
+            letter-spacing: -0.01em;
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #d1d5db;
-            border-radius: 6px;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
             font-size: 16px;
+            font-weight: 500;
             transition: all 0.3s ease;
             background: white;
+            color: #1f2937;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
         }
 
         .checkbox-group {
             display: grid;
-            gap: 15px;
+            gap: 16px;
         }
 
         .checkbox-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 6px;
-            border: 1px solid #e5e7eb;
+            gap: 14px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         }
 
         .checkbox-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             margin-top: 2px;
-            accent-color: #2563eb;
+            accent-color: #3b82f6;
+            cursor: pointer;
         }
 
         .checkbox-item label {
@@ -160,91 +294,133 @@
             font-weight: 500;
             color: #374151;
             cursor: pointer;
+            line-height: 1.6;
         }
 
+        .checkbox-item small {
+            display: block;
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* Modern Calculate Button */
         .calculate-btn {
             width: 100%;
-            padding: 18px;
-            background: #2563eb;
+            padding: 20px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 16px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 30px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin: 40px 0;
+            letter-spacing: -0.01em;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
         }
 
         .calculate-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
         }
 
+        .calculate-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .calculate-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Results Section */
         .resultado {
             background: white;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
             overflow: hidden;
-            margin-top: 30px;
+            margin-top: 40px;
             display: none;
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
         }
 
         .resultado.show {
             display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .resultado-header {
-            background: #1a365d;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             color: white;
-            padding: 20px;
+            padding: 24px 28px;
             text-align: center;
         }
 
         .resultado-header h3 {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .resultado-header p {
+            opacity: 0.9;
+            font-size: 1rem;
         }
 
         .resultado-content {
-            padding: 25px;
+            padding: 32px 28px;
         }
 
         .alert {
-            padding: 15px 20px;
-            border-radius: 6px;
-            margin-bottom: 25px;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
             font-weight: 600;
             text-align: center;
             font-size: 1.1rem;
+            border: 2px solid;
         }
 
         .alert-success {
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #bbf7d0;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            color: #065f46;
+            border-color: #10b981;
         }
 
         .alert-warning {
-            background: #fef3c7;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
             color: #92400e;
-            border: 1px solid #fde68a;
+            border-color: #f59e0b;
         }
 
         .resultado-grid {
             display: grid;
-            gap: 15px;
+            gap: 16px;
         }
 
         .resultado-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f3f4f6;
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
             font-size: 15px;
         }
 
@@ -253,14 +429,14 @@
         }
 
         .resultado-item.total {
-            background: #f8fafc;
-            padding: 18px;
-            border-radius: 6px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 24px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 1.1rem;
-            color: #1a365d;
-            margin-top: 15px;
-            border: 2px solid #2563eb;
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-top: 20px;
+            border: 2px solid #3b82f6;
         }
 
         .resultado-item .label {
@@ -269,41 +445,213 @@
         }
 
         .resultado-item .value {
-            font-weight: 600;
-            color: #1a365d;
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.05em;
         }
 
-        .footer {
-            background: #1a365d;
-            color: white;
-            padding: 25px;
+        /* Análises Pós-Arrematação */
+        .analises-pos-arrematacao {
+            background: #f8fafc;
+            padding: 60px 40px;
+            margin-top: 60px;
+            display: none;
+        }
+
+        .analises-pos-arrematacao.show {
+            display: block;
+        }
+
+        .analises-header {
             text-align: center;
-            margin-top: 40px;
+            margin-bottom: 50px;
         }
 
-        .footer h4 {
-            margin-bottom: 10px;
-            color: #93c5fd;
+        .analises-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
 
-        .footer p {
-            margin-bottom: 5px;
-            opacity: 0.9;
+        .analises-header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .contact-info {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #374151;
+        .cenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
+        .cenario-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .cenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .cenario-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .cenario-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .cenario-venda .cenario-icon {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .cenario-locacao .cenario-icon {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        .cenario-airbnb .cenario-icon {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .cenario-outros .cenario-icon {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .cenario-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .cenario-subtitle {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .cenario-metrics {
+            display: grid;
+            gap: 16px;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .roi-highlight {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 2px solid #10b981;
+        }
+
+        .roi-highlight .metric-label {
+            color: #065f46;
+            font-weight: 600;
+        }
+
+        .roi-highlight .metric-value {
+            color: #065f46;
+            font-size: 1.2rem;
+        }
+
+        /* Recomendações */
+        .recomendacoes {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #3b82f6;
+        }
+
+        .recomendacoes h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .recomendacoes h3 i {
+            margin-right: 12px;
+            color: #3b82f6;
+        }
+
+        .recomendacao-item {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .recomendacao-item h4 {
+            color: #1e40af;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .recomendacao-item p {
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .form-section {
-                padding: 20px;
+            .header {
+                padding: 40px 20px;
             }
             
-            .header h1 {
-                font-size: 1.8rem;
+            .brand-name {
+                font-size: 2rem;
+            }
+            
+            .form-section,
+            .analises-pos-arrematacao {
+                padding: 30px 20px;
             }
             
             .form-row {
@@ -311,29 +659,166 @@
             }
 
             .section-content {
-                padding: 20px;
+                padding: 24px 20px;
             }
+
+            .cenarios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .valor-maximo-section {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+
+            .valor-maximo-valor {
+                font-size: 2.5rem;
+            }
+
+            .analises-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 50px 40px 30px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .footer-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+        }
+
+        .footer-logo i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .footer h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-description {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 32px;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e2e8f0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #3b82f6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 24px;
+            color: #94a3b8;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <div class="header-top">
-        📞 Entre em contato para assessoria personalizada em leilões de imóveis
+        <i class="fas fa-phone"></i>
+        Assessoria personalizada em leilões de imóveis - Entre em contato para análise técnica especializada
     </div>
 
     <div class="container">
         <header class="header">
-            <h1>🏛️ Imóvel com Valor</h1>
-            <div class="subtitle">Calculadora de Orçamento de Guerra</div>
-            <div class="description">
-                Assessoria em arrematação de leilões - Análise personalizada e técnica para investimentos seguros
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h1 class="brand-name">IMÓVEL COM VALOR</h1>
+                </div>
+                <div class="header-subtitle">Calculadora Completa de Investimentos</div>
+                <div class="header-description">
+                    Análise especializada e técnica para arrematação segura em leilões de imóveis com projeções de retorno
+                </div>
             </div>
         </header>
 
+        <!-- Seção Valor Máximo Destacado -->
+        <div id="valorMaximoSection" class="valor-maximo-section">
+            <h2><i class="fas fa-target"></i> Valor Máximo Recomendado para Arrematação</h2>
+            <div id="valorMaximoValor" class="valor-maximo-valor">R$ 0,00</div>
+            <div class="valor-maximo-description">
+                Este é o valor limite que recomendamos para seu lance, considerando todos os custos, despesas e margem de segurança para o melhor cenário de retorno.
+            </div>
+        </div>
+
         <div class="form-section">
+            <!-- Dados Financeiros -->
             <div class="section">
                 <div class="section-header">
-                    📊 Dados Principais do Investimento
+                    <i class="fas fa-chart-line"></i>
+                    Dados Financeiros do Investimento
                 </div>
                 <div class="section-content">
                     <div class="form-row">
@@ -355,59 +840,260 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="cidade">Localização do Imóvel</label>
-                            <select id="cidade">
-                                <option value="curitiba">Curitiba - PR</option>
-                                <option value="saopaulo">São Paulo - SP</option>
-                                <option value="balneario">Balneário Camboriú - SC</option>
+                            <label for="valorMercado">Valor de Mercado Estimado (R$)</label>
+                            <input type="number" id="valorMercado" placeholder="Valor atual de venda" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Características do Imóvel -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-home"></i>
+                    Características Detalhadas do Imóvel
+                </div>
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipoImovel">Tipo de Imóvel</label>
+                            <select id="tipoImovel">
+                                <option value="apartamento">Apartamento</option>
+                                <option value="casa">Casa</option>
+                                <option value="terreno">Terreno</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="galpao">Galpão/Industrial</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="areaPrivativa">Área Privativa (m²)</label>
+                            <input type="number" id="areaPrivativa" placeholder="Ex: 85" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quartos">Número de Quartos</label>
+                            <input type="number" id="quartos" placeholder="Ex: 3" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="banheiros">Número de Banheiros</label>
+                            <input type="number" id="banheiros" placeholder="Ex: 2" min="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vagas">Vagas de Garagem</label>
+                            <input type="number" id="vagas" placeholder="Ex: 1" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="anoConstucao">Ano de Construção</label>
+                            <input type="number" id="anoConstucao" placeholder="Ex: 2010" min="1900" max="2024">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="estadoConservacao">Estado de Conservação</label>
+                            <select id="estadoConservacao">
+                                <option value="excelente">Excelente</option>
+                                <option value="bom">Bom</option>
+                                <option value="regular">Regular</option>
+                                <option value="necessita-reforma">Necessita Reforma</option>
+                                <option value="ruim">Ruim</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="padrao">Padrão do Imóvel</label>
+                            <select id="padrao">
+                                <option value="luxo">Luxo</option>
+                                <option value="alto">Alto Padrão</option>
+                                <option value="medio">Médio Padrão</option>
+                                <option value="economico">Econômico</option>
+                                <option value="popular">Popular</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Localização -->
             <div class="section">
                 <div class="section-header">
-                    ⚙️ Configurações do Investimento
+                    <i class="fas fa-map-marker-alt"></i>
+                    Localização e Mercado
+                </div>
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <select id="cidade">
+                                <option value="curitiba">Curitiba - PR</option>
+                                <option value="saopaulo">São Paulo - SP</option>
+                                <option value="balneario">Balneário Camboriú - SC</option>
+                                <option value="florianopolis">Florianópolis - SC</option>
+                                <option value="riodejaneiro">Rio de Janeiro - RJ</option>
+                                <option value="brasilia">Brasília - DF</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" placeholder="Ex: Centro, Copacabana">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="precoM2Regiao">Preço por m² na Região (R$)</label>
+                            <input type="number" id="precoM2Regiao" placeholder="Ex: 8500" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aluguelM2Regiao">Aluguel por m² na Região (R$)</label>
+                            <input type="number" id="aluguelM2Regiao" placeholder="Ex: 35" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="proximidades">Proximidades e Diferenciais</label>
+                        <textarea id="proximidades" placeholder="Ex: Próximo ao metrô, shopping, escolas, hospitais, vista para o mar, etc."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custos Mensais -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-calculator"></i>
+                    Custos Mensais e Operacionais
+                </div>
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taxaCondominio">Taxa de Condomínio (R$/mês)</label>
+                            <input type="number" id="taxaCondominio" placeholder="Ex: 450" step="0.01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="iptuMensal">IPTU Mensal (R$/mês)</label>
+                            <input type="number" id="iptuMensal" placeholder="Ex: 280" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="custoReforma">Custo Estimado de Reforma (R$)</label>
+                            <input type="number" id="custoReforma" placeholder="Ex: 25000" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tempoReforma">Tempo de Reforma (meses)</label>
+                            <input type="number" id="tempoReforma" placeholder="Ex: 3" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-cogs"></i>
+                    Configurações do Investimento
                 </div>
                 <div class="section-content">
                     <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" id="temOrcamentoReservado">
                             <label for="temOrcamentoReservado">
-                                Possuo orçamento específico reservado para este leilão<br>
-                                <small style="color: #6b7280;">(Não aplicar margem de segurança de 30%)</small>
+                                Possuo orçamento específico reservado para este leilão
+                                <small>Não aplicar margem de segurança de 30%</small>
                             </label>
                         </div>
                         <div class="checkbox-item">
                             <input type="checkbox" id="necessitaImissao">
                             <label for="necessitaImissao">
-                                O imóvel necessitará de Imissão de Posse<br>
-                                <small style="color: #6b7280;">(Imóvel ocupado - custos adicionais com oficial de justiça)</small>
+                                O imóvel necessitará de Imissão de Posse
+                                <small>Imóvel ocupado - custos adicionais com oficial de justiça</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="potencialTuristico">
+                            <label for="potencialTuristico">
+                                Localização com potencial turístico
+                                <small>Adequado para Airbnb e locação por temporada</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="potencialComercial">
+                            <label for="potencialComercial">
+                                Potencial para uso comercial
+                                <small>Zoneamento permite atividade comercial</small>
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button class="calculate-btn" onclick="calcularOrcamento()">
-                �� Calcular Orçamento de Guerra
+            <button class="calculate-btn" onclick="calcularInvestimento()">
+                <i class="fas fa-calculator"></i>
+                Calcular Análise Completa de Investimento
             </button>
 
             <div id="resultado" class="resultado"></div>
         </div>
+    </div>
 
-        <footer class="footer">
-            <h4>Imóvel com Valor - Assessoria em Leilões de Imóveis</h4>
-            <p>Encontre segurança para uma análise personalizada e técnica a respeito de leilões</p>
-            <p>Avaliações de viabilidade para dar lances e o suporte necessário para cada caso</p>
+    <!-- Análises Pós-Arrematação -->
+    <div id="analisesPosArrematacao" class="analises-pos-arrematacao">
+        <div class="analises-header">
+            <h2><i class="fas fa-chart-bar"></i> Análises Pós-Arrematação</h2>
+            <p>Projeções detalhadas de retorno sobre investimento para diferentes estratégias</p>
+        </div>
+
+        <div id="cenariosGrid" class="cenarios-grid">
+            <!-- Os cenários serão inseridos aqui via JavaScript -->
+        </div>
+
+        <div id="recomendacoes" class="recomendacoes">
+            <!-- As recomendações serão inseridas aqui via JavaScript -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h4>Imóvel com Valor</h4>
+            </div>
+            
+            <div class="footer-description">
+                Assessoria especializada em leilões de imóveis. Encontre segurança para uma análise personalizada e técnica, avaliações de viabilidade para dar lances e o suporte necessário para cada caso.
+            </div>
             
             <div class="contact-info">
-                <p>📧 contato@imovelcomvalor.com.br</p>
-                <p>📱 @imovelcomvalor</p>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contato@imovelcomvalor.com.br</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@imovelcomvalor</span>
+                </div>
             </div>
-        </footer>
-    </div>
+            
+            <div class="footer-bottom">
+                © 2024 Imóvel com Valor. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
 
     <script>
         const taxasPorCidade = {
@@ -416,21 +1102,60 @@
                 funrejus: 0.005,
                 oficialJustica: 800,
                 depositoJudicial: 3000,
-                itbiAliquota: 0.02
+                itbiAliquota: 0.02,
+                multiplicadorMercado: 1.0,
+                potencialTuristico: 0.6,
+                demandaLocacao: 0.85
             },
             saopaulo: {
                 nome: 'São Paulo - SP',
                 funrejus: 0.01,
                 oficialJustica: 1200,
                 depositoJudicial: 5000,
-                itbiAliquota: 0.03
+                itbiAliquota: 0.03,
+                multiplicadorMercado: 1.2,
+                potencialTuristico: 0.8,
+                demandaLocacao: 0.95
             },
             balneario: {
                 nome: 'Balneário Camboriú - SC',
                 funrejus: 0.003,
                 oficialJustica: 600,
                 depositoJudicial: 2500,
-                itbiAliquota: 0.025
+                itbiAliquota: 0.025,
+                multiplicadorMercado: 1.1,
+                potencialTuristico: 0.95,
+                demandaLocacao: 0.75
+            },
+            florianopolis: {
+                nome: 'Florianópolis - SC',
+                funrejus: 0.003,
+                oficialJustica: 600,
+                depositoJudicial: 2500,
+                itbiAliquota: 0.025,
+                multiplicadorMercado: 1.15,
+                potencialTuristico: 0.9,
+                demandaLocacao: 0.8
+            },
+            riodejaneiro: {
+                nome: 'Rio de Janeiro - RJ',
+                funrejus: 0.01,
+                oficialJustica: 1000,
+                depositoJudicial: 4000,
+                itbiAliquota: 0.03,
+                multiplicadorMercado: 1.1,
+                potencialTuristico: 0.95,
+                demandaLocacao: 0.9
+            },
+            brasilia: {
+                nome: 'Brasília - DF',
+                funrejus: 0.005,
+                oficialJustica: 900,
+                depositoJudicial: 3500,
+                itbiAliquota: 0.03,
+                multiplicadorMercado: 1.05,
+                potencialTuristico: 0.7,
+                demandaLocacao: 0.85
             }
         };
 
@@ -440,7 +1165,12 @@
             escritura: 1500,
             registro: 800,
             baixaPenhora: 600,
-            reservaSeguranca: 0.30
+            reservaSeguranca: 0.30,
+            corretagem: 0.06,
+            impostoRenda: 0.15,
+            taxaAdmImobiliaria: 0.08,
+            taxaAdmAirbnb: 0.12,
+            seguroImovel: 0.003
         };
 
         function formatarMoeda(valor) {
@@ -450,168 +1180,70 @@
             }).format(valor);
         }
 
-        function calcularOrcamento() {
+        function formatarPorcentagem(valor) {
+            return (valor * 100).toFixed(1) + '%';
+        }
+
+        function calcularValorMercadoEstimado() {
+            const areaPrivativa = parseFloat(document.getElementById('areaPrivativa').value) || 0;
+            const precoM2Regiao = parseFloat(document.getElementById('precoM2Regiao').value) || 0;
+            const estadoConservacao = document.getElementById('estadoConservacao').value;
+            const padrao = document.getElementById('padrao').value;
+            const anoConstucao = parseInt(document.getElementById('anoConstucao').value) || new Date().getFullYear();
+            const cidade = document.getElementById('cidade').value;
+
+            if (areaPrivativa === 0 || precoM2Regiao === 0) return 0;
+
+            let valorBase = areaPrivativa * precoM2Regiao;
+
+            // Ajuste por estado de conservação
+            const ajusteConservacao = {
+                'excelente': 1.1,
+                'bom': 1.0,
+                'regular': 0.9,
+                'necessita-reforma': 0.75,
+                'ruim': 0.6
+            };
+
+            // Ajuste por padrão
+            const ajustePadrao = {
+                'luxo': 1.3,
+                'alto': 1.15,
+                'medio': 1.0,
+                'economico': 0.85,
+                'popular': 0.7
+            };
+
+            // Ajuste por idade
+            const idadeImovel = new Date().getFullYear() - anoConstucao;
+            let ajusteIdade = 1.0;
+            if (idadeImovel > 30) ajusteIdade = 0.85;
+            else if (idadeImovel > 20) ajusteIdade = 0.9;
+            else if (idadeImovel > 10) ajusteIdade = 0.95;
+
+            // Multiplicador da cidade
+            const multiplicadorCidade = taxasPorCidade[cidade]?.multiplicadorMercado || 1.0;
+
+            valorBase *= ajusteConservacao[estadoConservacao] || 1.0;
+            valorBase *= ajustePadrao[padrao] || 1.0;
+            valorBase *= ajusteIdade;
+            valorBase *= multiplicadorCidade;
+
+            return valorBase;
+        }
+
+        function calcularInvestimento() {
+            // Obter todos os valores dos inputs
             const valorArrematacao = parseFloat(document.getElementById('valorArrematacao').value) || 0;
             const valorDisponivel = parseFloat(document.getElementById('valorDisponivel').value) || 0;
             const valorVenal = parseFloat(document.getElementById('valorVenal').value) || valorArrematacao;
+            let valorMercado = parseFloat(document.getElementById('valorMercado').value) || 0;
             const cidade = document.getElementById('cidade').value;
             const temOrcamentoReservado = document.getElementById('temOrcamentoReservado').checked;
             const necessitaImissao = document.getElementById('necessitaImissao').checked;
-
-            if (valorArrematacao <= 0) {
-                alert('Por favor, informe o valor de arrematação');
-                return;
-            }
-
-            if (valorDisponivel <= 0) {
-                alert('Por favor, informe o capital total disponível');
-                return;
-            }
-
-            const taxasCidade = taxasPorCidade[cidade];
-
-            // Cálculos dos custos
-            const custoLeiloeiro = valorArrematacao * taxasFixas.leiloeiro;
-            const custoAssessoria = valorArrematacao * taxasFixas.assessoria;
-            const custoEscritura = taxasFixas.escritura;
-            const custoRegistro = taxasFixas.registro;
-            const custoBaixaPenhora = taxasFixas.baixaPenhora;
-            const custoITBI = valorVenal * taxasCidade.itbiAliquota;
-            const custoFunrejus = valorArrematacao * taxasCidade.funrejus;
-            
-            let custoImissaoPosse = 0;
-            if (necessitaImissao) {
-                custoImissaoPosse = taxasCidade.oficialJustica + taxasCidade.depositoJudicial;
-            }
-
-            const custosTotais = custoLeiloeiro + custoAssessoria + custoEscritura + 
-                                custoRegistro + custoBaixaPenhora + custoITBI + 
-                                custoFunrejus + custoImissaoPosse;
-
-            const orcamentoGuerra = valorArrematacao + custosTotais;
-
-            let valorDisponivelInvestimento = valorDisponivel;
-            if (!temOrcamentoReservado) {
-                valorDisponivelInvestimento = valorDisponivel * (1 - taxasFixas.reservaSeguranca);
-            }
-
-            const isViavel = orcamentoGuerra <= valorDisponivelInvestimento;
-            const diferenca = valorDisponivelInvestimento - orcamentoGuerra;
-
-            exibirResultado({
-                valorArrematacao,
-                custoLeiloeiro,
-                custoAssessoria,
-                custoEscritura,
-                custoRegistro,
-                custoBaixaPenhora,
-                custoITBI,
-                custoFunrejus,
-                custoImissaoPosse,
-                custosTotais,
-                orcamentoGuerra,
-                valorDisponivelInvestimento,
-                isViavel,
-                diferenca,
-                cidade: taxasCidade.nome,
-                necessitaImissao
-            });
-        }
-
-        function exibirResultado(dados) {
-            const resultadoDiv = document.getElementById('resultado');
-            
-            let html = `
-                <div class="resultado-header">
-                    <h3>📊 Análise Completa do Orçamento de Guerra</h3>
-                    <p>Relatório detalhado para ${dados.cidade}</p>
-                </div>
-                
-                <div class="resultado-content">
-                    ${dados.isViavel ? 
-                        '<div class="alert alert-success">✅ INVESTIMENTO VIÁVEL - Dentro dos parâmetros de segurança!</div>' : 
-                        '<div class="alert alert-warning">⚠️ INVESTIMENTO DE ALTO RISCO - Requer análise adicional!</div>'
-                    }
-                    
-                    <div class="resultado-grid">
-                        <div class="resultado-item">
-                            <span class="label">💰 Valor de Arrematação:</span>
-                            <span class="value">${formatarMoeda(dados.valorArrematacao)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">🏛️ Taxa do Leiloeiro (5%):</span>
-                            <span class="value">${formatarMoeda(dados.custoLeiloeiro)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">👨‍💼 Assessoria Especializada (5%):</span>
-                            <span class="value">${formatarMoeda(dados.custoAssessoria)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">📄 Taxa de Escritura:</span>
-                            <span class="value">${formatarMoeda(dados.custoEscritura)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">📋 Taxa de Registro:</span>
-                            <span class="value">${formatarMoeda(dados.custoRegistro)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">🔓 Baixa Penhora Matrícula:</span>
-                            <span class="value">${formatarMoeda(dados.custoBaixaPenhora)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">🏢 ITBI (Imposto de Transmissão):</span>
-                            <span class="value">${formatarMoeda(dados.custoITBI)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">⚖️ FUNREJUS:</span>
-                            <span class="value">${formatarMoeda(dados.custoFunrejus)}</span>
-                        </div>
-                        
-                        ${dados.custoImissaoPosse > 0 ? `
-                        <div class="resultado-item">
-                            <span class="label">🏠 Imissão de Posse:</span>
-                            <span class="value">${formatarMoeda(dados.custoImissaoPosse)}</span>
-                        </div>
-                        ` : ''}
-                        
-                        <div class="resultado-item">
-                            <span class="label">💼 Total de Custos Adicionais:</span>
-                            <span class="value">${formatarMoeda(dados.custosTotais)}</span>
-                        </div>
-                        
-                        <div class="resultado-item total">
-                            <span class="label">🎯 ORÇAMENTO DE GUERRA TOTAL:</span>
-                            <span class="value">${formatarMoeda(dados.orcamentoGuerra)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">💳 Capital Disponível p/ Investimento:</span>
-                            <span class="value">${formatarMoeda(dados.valorDisponivelInvestimento)}</span>
-                        </div>
-                        
-                        <div class="resultado-item total">
-                            <span class="label" style="color: ${dados.diferenca >= 0 ? '#166534' : '#dc2626'}">
-                                ${dados.diferenca >= 0 ? '💚 Reserva de Segurança:' : '🔴 Déficit de Capital:'}
-                            </span>
-                            <span class="value" style="color: ${dados.diferenca >= 0 ? '#166534' : '#dc2626'}">
-                                ${formatarMoeda(Math.abs(dados.diferenca))}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            resultadoDiv.innerHTML = html;
-            resultadoDiv.classList.add('show');
-            resultadoDiv.scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
-</body>
-</html>
+            const taxaCondominio = parseFloat(document.getElementById('taxaCondominio').value) || 0;
+            const iptuMensal = parseFloat(document.getElementById('iptuMensal').value) || 0;
+            const custoReforma = parseFloat(document.getElementById('custoReforma').value) || 0;
+            const tempoReforma = parseInt(document.getElementById('tempoReforma').value) || 0;
+            const potencialTuristico = document.getElementById('potencialTuristico').checked;
+            const potencialComercial =
