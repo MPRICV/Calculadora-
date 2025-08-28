@@ -20,479 +20,155 @@
             line-height: 1.6;
             min-height: 100vh;
         }
+/* Header Top Bar */
+.header-top {
+    background: #1e3a8a;
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
 
-        /* Header Top Bar */
-        .header-top {
-            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
-            color: white;
-            padding: 12px 0;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 2px 10px rgba(30, 64, 175, 0.1);
-        }
+.header-top i {
+    margin-right: 8px;
+    color: #93c5fd;
+}
 
-        .header-top i {
-            margin-right: 8px;
-            color: #93c5fd;
-        }
+/* Modern Header */
+.header {
+    background: #ffffff;
+    padding: 50px 40px;
+    text-align: center;
+    border-bottom: 3px solid #1e3a8a;
+}
 
-        /* Main Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 24px 24px;
-            overflow: hidden;
-        }
+.logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
-        /* Modern Header */
-        .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 60px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    background: #1e3a8a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
-        }
+.logo-icon i {
+    font-size: 24px;
+    color: white;
+}
 
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
+.brand-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0;
+}
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
+.header-subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
 
-        .logo-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
+.header-description {
+    font-size: 1rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
 
-        .logo-icon i {
-            font-size: 28px;
-            color: white;
-        }
+/* Modern Footer */
+.footer {
+    background: #1e3a8a;
+    color: white;
+    padding: 40px 40px 25px;
+    margin-top: 60px;
+}
 
-        .brand-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            letter-spacing: -0.025em;
-            margin: 0;
-        }
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        .header-subtitle {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #3b82f6;
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
-        }
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
-        .header-description {
-            font-size: 1.1rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 400;
-            line-height: 1.7;
-        }
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
 
-        /* Form Section */
-        .form-section {
-            padding: 50px 40px;
-            background: #fafafa;
-        }
+.footer-logo i {
+    font-size: 20px;
+    color: #1e3a8a;
+}
 
-        .section {
-            background: white;
-            margin-bottom: 32px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
+.footer h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
 
-        .section:hover {
-            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
+.footer-description {
+    font-size: 1rem;
+    color: #e2e8f0;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .section-header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 20px 28px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            letter-spacing: -0.01em;
-        }
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
 
-        .section-header i {
-            margin-right: 12px;
-            font-size: 1.2rem;
-            color: #94a3b8;
-        }
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-weight: 500;
+}
 
-        .section-content {
-            padding: 32px 28px;
-        }
+.contact-item i {
+    font-size: 1.1rem;
+    color: #93c5fd;
+}
 
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #374151;
-            font-size: 14px;
-            letter-spacing: -0.01em;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            background: white;
-            color: #1f2937;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .checkbox-group {
-            display: grid;
-            gap: 16px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox-item:hover {
-            border-color: #3b82f6;
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-top: 2px;
-            accent-color: #3b82f6;
-            cursor: pointer;
-        }
-
-        .checkbox-item label {
-            margin: 0;
-            font-weight: 500;
-            color: #374151;
-            cursor: pointer;
-            line-height: 1.6;
-        }
-
-        .checkbox-item small {
-            display: block;
-            color: #6b7280;
-            font-size: 13px;
-            margin-top: 4px;
-        }
-
-        /* Modern Calculate Button */
-        .calculate-btn {
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 40px 0;
-            letter-spacing: -0.01em;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        .calculate-btn:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .calculate-btn:active {
-            transform: translateY(-1px);
-        }
-
-        .calculate-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        /* Results Section */
-        .resultado {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            margin-top: 40px;
-            display: none;
-            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .resultado.show {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .resultado-header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 24px 28px;
-            text-align: center;
-        }
-
-        .resultado-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
-
-        .resultado-header p {
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-
-        .resultado-content {
-            padding: 32px 28px;
-        }
-
-        .alert {
-            padding: 20px 24px;
-            border-radius: 12px;
-            margin-bottom: 32px;
-            font-weight: 600;
-            text-align: center;
-            font-size: 1.1rem;
-            border: 2px solid;
-        }
-
-        .alert-success {
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            color: #065f46;
-            border-color: #10b981;
-        }
-
-        .alert-warning {
-            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-            color: #92400e;
-            border-color: #f59e0b;
-        }
-
-        .resultado-grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        .resultado-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 15px;
-        }
-
-        .resultado-item:last-child {
-            border-bottom: none;
-        }
-
-        .resultado-item.total {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            padding: 24px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #1e293b;
-            margin-top: 20px;
-            border: 2px solid #3b82f6;
-        }
-
-        .resultado-item .label {
-            color: #374151;
-            font-weight: 500;
-        }
-
-        .resultado-item .value {
-            font-weight: 700;
-            color: #1e293b;
-            font-size: 1.05em;
-        }
-
-        /* Modern Footer */
-        .footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            padding: 50px 40px 30px;
-            margin-top: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .footer-logo {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
-        }
-
-        .footer-logo i {
-            font-size: 24px;
-            color: white;
-        }
-
-        .footer h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin: 0;
-            letter-spacing: -0.02em;
-        }
-
-        .footer-description {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-bottom: 32px;
-            line-height: 1.7;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #e2e8f0;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            color: #3b82f6;
-            transform: translateY(-2px);
-        }
-
-        .contact-item i {
-            font-size: 1.2rem;
-            color: #3b82f6;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #334155;
-            padding-top: 24px;
-            color: #94a3b8;
-            font-size: 14px;
-        }
+.footer-bottom {
+    border-top: 1px solid #3b82f6;
+    padding-top: 20px;
+    color: #e2e8f0;
+    font-size: 13px;
+}
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -534,25 +210,25 @@
 </head>
 <body>
     <div class="header-top">
-        <i class="fas fa-phone"></i>
-        Assessoria personalizada em leilões de imóveis - Entre em contato para análise técnica especializada
-    </div>
+    <i class="fas fa-phone"></i>
+    Assessoria personalizada em leilões de imóveis - Entre em contato para análise técnica especializada
+</div>
 
-    <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <div class="logo-section">
-                    <div class="logo-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h1 class="brand-name">IMÓVEL COM VALOR</h1>
+<div class="container">
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-building"></i>
                 </div>
-                <div class="header-subtitle">Calculadora de Valor de Investimento</div>
-                <div class="header-description">
-                    Análise especializada e técnica para arrematação segura em leilões de imóveis
-                </div>
+                <h1 class="brand-name">IMÓVEL COM VALOR</h1>
             </div>
-        </header>
+            <div class="header-subtitle">Calculadora de Análise de Investimentos</div>
+            <div class="header-description">
+                Ferramenta técnica para análise completa de viabilidade em leilões de imóveis
+            </div>
+        </div>
+    </header>
 
         <div class="form-section">
             <div class="section">
@@ -625,35 +301,36 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <i class="fas fa-building"></i>
-                </div>
-                <h4>Imóvel com Valor</h4>
+   <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <i class="fas fa-building"></i>
             </div>
-            
-            <div class="footer-description">
+            <h4>Imóvel com Valor</h4>
+        </div>
+        
+        <div class="footer-description">
                 Assessoria especializada em leilões de imóveis. Encontre segurança para uma análise personalizada e técnica, avaliações de viabilidade para dar lances e o suporte necessário para cada caso.
+             </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>contato@imovelcomvalor.com.br</span>
             </div>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>contato@imovelcomvalor.com.br</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-instagram"></i>
-                    <span>@imovelcomvalor</span>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                © 2024 Imóvel com Valor. Todos os direitos reservados.
+            <div class="contact-item">
+                <i class="fab fa-instagram"></i>
+                <span>@imovelcomvalor</span>
             </div>
         </div>
-    </footer>
+        
+        <div class="footer-bottom">
+            © 2020 Imóvel com Valor. Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
 
     <script>
         const taxasPorCidade = {
