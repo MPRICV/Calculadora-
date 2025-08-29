@@ -38,7 +38,7 @@
 
 /* Modern Header */
 .header {
-    background: radial-gradient(ellipse at center, #2a3441 0%, #1e2530 70%, #181d26 100%);
+    background-color: #202735;
     border-radius: 12px;
     padding: 40px;
     color: #FFFFFF;
@@ -47,56 +47,144 @@
 
 .header-content {
     position: relative;
-    z-index: 2;
 }
 
-.logo-section {
+/* --- Seção da Marca (Ícone + Texto) --- */
+.brand-section {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
-.logo-icon {
-    width: 50px;
-    height: 50px;
-    background: #3665f3;
-    border-radius: 10px;
+.brand-icon {
+    background-color: #4B89F7;
+    border-radius: 15px;
+    width: 68px;
+    height: 68px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-right: 15px;
-}
-
-.logo-icon i {
-    font-size: 24px;
-    color: white;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 36px;
 }
 
 .brand-text {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
-.brand-name {
-    font-size: 1.8rem;
+.main-brand {
+    font-size: 32px;
     font-weight: 700;
-    color: #ffffff;
     margin: 0;
-    line-height: 1.1;
-    text-transform: uppercase;
-}
-
-.brand-tagline {
-    font-size: 0.75rem;
-    color: #a0a4a8;
-    font-weight: 500;
-    margin-top: 2px;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
+    color: #FFFFFF;
 }
 
-.header-title {
+.sub-brand {
+    font-size: 14px;
+    color: #A7A9AC;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* --- Seção Principal do Conteúdo (Título e Descrição) --- */
+.main-content {
     text-align: center;
+    margin-bottom: 40px;
+}
+
+.main-title {
+    font-size: 44px;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+.description-text {
+    font-size: 17px;
+    color: #A7A9AC;
+    margin: 0 auto;
+    max-width: 680px;
+    line-height: 1.5;
+}
+
+/* --- Divisor Horizontal --- */
+.divider {
+    border: none;
+    border-top: 1px solid #444B5B;
+    margin: 0;
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        margin: 10px;
+        padding: 30px 20px;
+    }
+
+    .brand-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .brand-text {
+        text-align: center;
+    }
+
+    .main-brand {
+        font-size: 24px;
+    }
+
+    .main-title {
+        font-size: 32px;
+    }
+}
+
+.description-text {
+    font-size: 17px;
+    color: #A7A9AC;
+    margin: 0 auto;
+    max-width: 680px;
+    line-height: 1.5;
+}
+
+/* --- Divisor Horizontal --- */
+.divider {
+    border: none;
+    border-top: 1px solid #444B5B;
+    margin: 0;
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        margin: 10px;
+        padding: 30px 20px;
+    }
+
+    .brand-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .brand-text {
+        text-align: center;
+    }
+
+    .main-brand {
+        font-size: 24px;
+    }
+
+    .main-title {
+        font-size: 32px;
+    }
 }
 
 .header-title h2 {
