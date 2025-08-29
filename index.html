@@ -38,49 +38,113 @@
 
 /* Modern Header */
 .header {
-    background-color: #202735;
-    border-radius: 12px;
-    padding: 40px;
-    color: #FFFFFF;
-    margin: 20px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: white;
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
 }
 
 .header-content {
     position: relative;
+    z-index: 2;
+    text-align: center;
 }
 
-/* --- Seção da Marca (Ícone + Texto) --- */
+/* Brand Section - Centralizada */
 .brand-section {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .brand-icon {
-    background-color: #4B89F7;
-    border-radius: 15px;
-    width: 68px;
-    height: 68px;
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 12px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-right: 20px;
-    font-size: 36px;
+    justify-content: center;
+    margin-right: 16px;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+    font-size: 28px;
 }
 
 .brand-text {
-    display: flex;
-    flex-direction: column;
+    text-align: left;
 }
 
 .main-brand {
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.02em;
     margin: 0;
-    letter-spacing: 0.5px;
-    color: #FFFFFF;
+    line-height: 1.1;
 }
 
+.sub-brand {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    font-weight: 500;
+    margin: 2px 0 0 0;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+
+/* Title Section - Centralizada */
+.title-section {
+    text-align: center;
+}
+
+.calculator-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+}
+
+.calculator-description {
+    font-size: 1rem;
+    color: #94a3b8;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: 30px 20px;
+    }
+
+    .brand-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .brand-text {
+        text-align: center;
+    }
+
+    .main-brand {
+        font-size: 1.5rem;
+    }
+}
 .sub-brand {
     font-size: 14px;
     color: #A7A9AC;
@@ -622,6 +686,7 @@
 <div class="container">
     <header class="header">
         <div class="header-content">
+            <!-- Logo e Marca centralizados -->
             <div class="brand-section">
                 <div class="brand-icon">
                     🏠
@@ -632,12 +697,11 @@
                 </div>
             </div>
 
-            <div class="main-content">
-                <h1 class="main-title">Calculadora de Análise de Investimentos</h1>
-                <p class="description-text">Ferramenta técnica para análise completa de viabilidade em leilões de imóveis</p>
+            <!-- Título principal centralizado -->
+            <div class="title-section">
+                <h2 class="calculator-title">Calculadora de Análise de Investimentos</h2>
+                <p class="calculator-description">Ferramenta técnica para análise completa de viabilidade em leilões de imóveis</p>
             </div>
-
-            <hr class="divider">
         </div>
     </header>
         <div class="form-section">
