@@ -36,90 +36,77 @@
     color: #93c5fd;
 }
 
-/* Modern Header */
+/* Header */
 .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #2a303f 0%, #1e2530 100%);
     color: white;
     padding: 40px 30px;
     position: relative;
-    overflow: hidden;
-}
-
-.header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
 }
 
 .header-content {
     position: relative;
     z-index: 2;
-    text-align: center;
 }
 
-/* Brand Section - Centralizada */
-.brand-section {
+/* Logo Section - ALINHADO À ESQUERDA */
+.logo-section {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* ESQUERDA, não center */
     margin-bottom: 30px;
 }
 
-.brand-icon {
+.logo-icon {
     width: 52px;
     height: 52px;
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    background: #4178fc;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 16px;
-    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
-    font-size: 28px;
+    flex-shrink: 0;
 }
 
 .brand-text {
-    text-align: left;
+    text-align: left; /* ESQUERDA */
 }
 
-.main-brand {
+.brand-name {
     font-size: 1.75rem;
     font-weight: 800;
-    color: white;
-    letter-spacing: -0.02em;
+    color: #ffffff;
     margin: 0;
     line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
-.sub-brand {
+.brand-tagline {
     font-size: 0.875rem;
-    color: #94a3b8;
+    color: #a2a7b5;
     font-weight: 500;
-    margin: 2px 0 0 0;
+    margin-top: 2px;
     letter-spacing: 0.025em;
     text-transform: uppercase;
 }
 
-/* Title Section - Centralizada */
-.title-section {
+/* Content Section - CENTRALIZADO */
+.content-section {
     text-align: center;
 }
 
-.calculator-title {
+.main-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #e2e8f0;
+    color: #ffffff;
     margin: 0 0 8px 0;
     letter-spacing: -0.01em;
 }
 
-.calculator-description {
+.main-description {
     font-size: 1rem;
-    color: #94a3b8;
+    color: #a2a7b5;
     font-weight: 400;
     max-width: 600px;
     margin: 0 auto;
@@ -132,8 +119,9 @@
         padding: 30px 20px;
     }
 
-    .brand-section {
+    .logo-section {
         flex-direction: column;
+        text-align: center;
         gap: 12px;
     }
 
@@ -141,7 +129,7 @@
         text-align: center;
     }
 
-    .main-brand {
+    .brand-name {
         font-size: 1.5rem;
     }
 }
@@ -686,21 +674,23 @@
 <div class="container">
     <header class="header">
         <div class="header-content">
-            <!-- Logo e Marca centralizados -->
-            <div class="brand-section">
-                <div class="brand-icon">
-                    🏠
+            <!-- Logo section - ALINHADO À ESQUERDA -->
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
                 </div>
                 <div class="brand-text">
-                    <h1 class="main-brand">IMÓVEL COM VALOR</h1>
-                    <p class="sub-brand">ASSESSORIA ESPECIALIZADA</p>
+                    <h1 class="brand-name">IMÓVEL COM VALOR</h1>
+                    <div class="brand-tagline">ASSESSORIA ESPECIALIZADA</div>
                 </div>
             </div>
-
-            <!-- Título principal centralizado -->
-            <div class="title-section">
-                <h2 class="calculator-title">Calculadora de Análise de Investimentos</h2>
-                <p class="calculator-description">Ferramenta técnica para análise completa de viabilidade em leilões de imóveis</p>
+            
+            <!-- Content section - CENTRALIZADO -->
+            <div class="content-section">
+                <h2 class="main-title">Calculadora de Análise de Investimentos</h2>
+                <p class="main-description">Ferramenta técnica para análise completa de viabilidade em leilões de imóveis</p>
             </div>
         </div>
     </header>
