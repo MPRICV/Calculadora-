@@ -21,14 +21,15 @@
             min-height: 100vh;
         }
 
-    /* Header Top Bar */
+  /* Header Top Bar */
 .header-top {
-    background: #1e3a8a;
+    background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
     color: white;
     padding: 12px 0;
     text-align: center;
     font-size: 14px;
     font-weight: 500;
+    box-shadow: 0 2px 10px rgba(30, 64, 175, 0.1);
 }
 
 .header-top i {
@@ -49,11 +50,11 @@
     z-index: 2;
 }
 
-/* Logo Section - ALINHADO À ESQUERDA */
+/* Logo Section - Ícone AO LADO do texto */
 .logo-section {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* ESQUERDA, não center */
+    justify-content: center;
     margin-bottom: 30px;
 }
 
@@ -69,8 +70,13 @@
     flex-shrink: 0;
 }
 
+.logo-icon i {
+    font-size: 28px;
+    color: white;
+}
+
 .brand-text {
-    text-align: left; /* ESQUERDA */
+    text-align: left;
 }
 
 .brand-name {
@@ -80,6 +86,59 @@
     margin: 0;
     line-height: 1.1;
     letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+    font-size: 0.875rem;
+    color: #a2a7b5;
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+
+/* Content Section - CENTRALIZADO */
+.content-section {
+    text-align: center;
+}
+
+.main-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+}
+
+.main-description {
+    font-size: 1rem;
+    color: #a2a7b5;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: 30px 20px;
+    }
+
+    .logo-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .brand-text {
+        text-align: center;
+    }
+
+    .brand-name {
+        font-size: 1.5rem;
+    }
+}
 }
 
 .brand-tagline {
@@ -674,12 +733,17 @@
 <div class="container">
     <header class="header">
         <div class="header-content">
-            <!-- Logo section - ALINHADO À ESQUERDA -->
-          <div class="logo-icon">
-    <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
-        <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
-    </svg>
-</div> 
+            <!-- Logo section - Ícone AO LADO do título -->
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="brand-text">
+                    <h1 class="brand-name">IMÓVEL COM VALOR</h1>
+                    <div class="brand-tagline">ASSESSORIA ESPECIALIZADA</div>
+                </div>
+            </div>
+            
             <!-- Content section - CENTRALIZADO -->
             <div class="content-section">
                 <h2 class="main-title">Calculadora de Análise de Investimentos</h2>
