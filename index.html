@@ -1,14 +1,9 @@
-## 🎯 **CALCULADORA APRIMORADA - HUB DE DECISÃO ESTRATÉGICA**
-
-```html
 <!DOCTYPE html>
-<html lang=\"pt-BR\">
+<html lang="pt-BR">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <title>Hub de Análise Estratégica - Imóvel com Valor</title>
-    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\" rel=\"stylesheet\">
-    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Aprimorada - Imóvel com Valor</title>
     <style>
         * {
             margin: 0;
@@ -17,1397 +12,420 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            color: #1e293b;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
-            min-height: 100vh;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #2a303f 0%, #1e2530 100%);
-            color: white;
-            padding: 40px 30px;
-            position: relative;
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .header-content {
-            position: relative;
-            z-index: 2;
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #e9ecef;
         }
 
-        .logo-section {
-            display: flex;
+        .calculator-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .logo-icon {
-            width: 52px;
-            height: 52px;
-            background: #4178fc;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
-            flex-shrink: 0;
-        }
-
-        .logo-icon i {
-            font-size: 28px;
+            background-color: #007bff;
             color: white;
-        }
-
-        .brand-text {
-            text-align: left;
-        }
-
-        .brand-name {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin: 0;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .brand-tagline {
-            font-size: 0.875rem;
-            color: #a2a7b5;
-            font-weight: 500;
-            margin-top: 2px;
-            letter-spacing: 0.025em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .content-section {
+        .calculator-badge::before {
+            content: "🎯";
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #004085;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #004085;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #495057;
+            margin-bottom: 30px;
             text-align: center;
         }
 
-        .main-title {
-            font-size: 1.5rem;
+        fieldset {
+            border: none;
+            margin-bottom: 35px;
+            padding: 0;
+        }
+
+        legend {
+            font-size: 1.4em;
+            color: #004085;
             font-weight: 600;
-            color: #ffffff;
-            margin: 0 0 8px 0;
-            letter-spacing: -0.01em;
-        }
-
-        .main-description {
-            font-size: 1rem;
-            color: #a2a7b5;
-            font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        /* Form Section */
-        .form-section {
-            padding: 50px 40px;
-            background: #fafafa;
-        }
-
-        .section {
-            background: white;
-            margin-bottom: 32px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .section:hover {
-            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .section-header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 20px 28px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            letter-spacing: -0.01em;
-        }
-
-        .section-header i {
-            margin-right: 12px;
-            font-size: 1.2rem;
-            color: #94a3b8;
-        }
-
-        .section-content {
-            padding: 32px 28px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+            width: 100%;
+            display: block;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
-        .form-group label {
+        label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #374151;
-            font-size: 14px;
-            letter-spacing: -0.01em;
+            color: #495057;
+            font-size: 1em;
         }
 
-        .form-group input,
-        .form-group select {
+        input[type="text"],
+        input[type="number"],
+        select {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            background: white;
-            color: #1f2937;
+            padding: 12px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-            transform: translateY(-1px);
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        input::placeholder {
+            color: #adb5bd;
+            font-style: italic;
+        }
+
+        select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            appearance: none;
         }
 
         .checkbox-group {
-            display: grid;
-            gap: 16px;
-        }
-
-        .checkbox-item {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
         }
 
-        .checkbox-item:hover {
-            border-color: #3b82f6;
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 12px;
+            margin-top: 3px;
+            transform: scale(1.2);
+            accent-color: #007bff;
+            flex-shrink: 0;
         }
 
-        .checkbox-item input[type=\"checkbox\"] {
-            width: 20px;
-            height: 20px;
-            margin-top: 2px;
-            accent-color: #3b82f6;
-            cursor: pointer;
-        }
-
-        .checkbox-item label {
-            margin: 0;
+        .checkbox-group label {
+            margin-bottom: 0;
             font-weight: 500;
-            color: #374151;
+            color: #495057;
             cursor: pointer;
+        }
+
+        .help-text {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 5px;
+            margin-left: 32px;
+            font-style: italic;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 30px;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #0056b3, #004085);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px 0;
+            border-top: 2px solid #e9ecef;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-radius: 0 0 10px 10px;
+            margin-left: -30px;
+            margin-right: -30px;
+            margin-bottom: -30px;
+        }
+
+        footer h2 {
+            font-size: 1.8em;
+            color: #004085;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+            color: #6c757d;
             line-height: 1.6;
         }
 
-        .checkbox-item small {
-            display: block;
-            color: #6b7280;
-            font-size: 13px;
-            margin-top: 4px;
-        }
-
-        /* Calculate Button */
-        .calculate-btn {
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 40px 0;
-            letter-spacing: -0.01em;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        .calculate-btn:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .calculate-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        /* Results Section */
-        .resultado {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            margin-top: 40px;
-            display: none;
-            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .resultado.show {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .resultado-header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 24px 28px;
-            text-align: center;
-        }
-
-        .resultado-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
-
-        .resultado-header p {
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-
-        .resultado-content {
-            padding: 32px 28px;
-        }
-
-        /* Executive Summary */
-        .executive-summary {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid #0ea5e9;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 32px;
-        }
-
-        .executive-summary h4 {
-            color: #0c4a6e;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .executive-summary h4 i {
-            margin-right: 12px;
-            color: #0ea5e9;
-        }
-
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .summary-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #bae6fd;
-            text-align: center;
-        }
-
-        .summary-item .label {
-            font-size: 14px;
-            color: #0c4a6e;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .summary-item .value {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #0369a1;
-        }
-
-        .summary-item.roi {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-            border-color: #22c55e;
-        }
-
-        .summary-item.roi .label {
-            color: #166534;
-        }
-
-        .summary-item.roi .value {
-            color: #15803d;
-        }
-
-        /* Recommendations */
-        .recommendations {
-            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
-            border: 2px solid #f59e0b;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 32px;
-        }
-
-        .recommendations h4 {
-            color: #92400e;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .recommendations h4 i {
-            margin-right: 12px;
-            color: #f59e0b;
-        }
-
-        .recommendation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .recommendation-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #fed7aa;
-            text-align: center;
-        }
-
-        .recommendation-item .label {
-            font-size: 14px;
-            color: #92400e;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .recommendation-item .value {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #d97706;
-        }
-
-        /* Alerts and Insights */
-        .alerts-insights {
-            margin-bottom: 32px;
-        }
-
-        .alerts-insights h4 {
-            color: #1e293b;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .alerts-insights h4 i {
-            margin-right: 12px;
-            color: #3b82f6;
-        }
-
-        .alert {
-            padding: 20px 24px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid;
-            display: flex;
-            align-items: center;
-        }
-
-        .alert i {
-            margin-right: 12px;
-            font-size: 1.2rem;
-        }
-
-        .alert-success {
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            color: #065f46;
-            border-color: #10b981;
-        }
-
-        .alert-warning {
-            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-            color: #92400e;
-            border-color: #f59e0b;
-        }
-
-        .alert-danger {
-            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
-            color: #991b1b;
-            border-color: #ef4444;
-        }
-
-        .alert-info {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            color: #1e40af;
-            border-color: #3b82f6;
-        }
-
-        /* Scenario Analysis */
-        .scenario-analysis {
-            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-            border: 2px solid #8b5cf6;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 32px;
-        }
-
-        .scenario-analysis h4 {
-            color: #581c87;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .scenario-analysis h4 i {
-            margin-right: 12px;
-            color: #8b5cf6;
-        }
-
-        .scenario-table {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #c4b5fd;
-        }
-
-        .scenario-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .scenario-table th {
-            background: #8b5cf6;
-            color: white;
-            padding: 16px;
-            font-weight: 600;
-            text-align: left;
-        }
-
-        .scenario-table td {
-            padding: 16px;
-            border-bottom: 1px solid #f3f4f6;
-        }
-
-        .scenario-table tr:nth-child(even) {
-            background: #faf5ff;
-        }
-
-        .scenario-table .roi-positive {
-            color: #15803d;
-            font-weight: 700;
-        }
-
-        .scenario-table .roi-negative {
-            color: #dc2626;
-            font-weight: 700;
-        }
-
-        /* Detailed Results */
-        .resultado-grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        .resultado-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 15px;
-        }
-
-        .resultado-item:last-child {
-            border-bottom: none;
-        }
-
-        .resultado-item.total {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            padding: 24px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #1e293b;
-            margin-top: 20px;
-            border: 2px solid #3b82f6;
-        }
-
-        .resultado-item .label {
-            color: #374151;
-            font-weight: 500;
-        }
-
-        .resultado-item .value {
-            font-weight: 700;
-            color: #1e293b;
-            font-size: 1.05em;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            padding: 50px 40px 30px;
-            margin-top: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .footer-logo {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
-        }
-
-        .footer-logo i {
-            font-size: 24px;
-            color: white;
-        }
-
-        .footer h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin: 0;
-            letter-spacing: -0.02em;
-        }
-
-        .footer-description {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-bottom: 32px;
-            line-height: 1.7;
+        footer .description-text {
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 20px;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #0056b3;
+            text-decoration: underline;
         }
 
         .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
+            margin: 20px 0;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #e2e8f0;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        .copyright {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+            font-size: 0.9em;
+            color: #adb5bd;
         }
 
-        .contact-item:hover {
-            color: #3b82f6;
-            transform: translateY(-2px);
-        }
-
-        .contact-item i {
-            font-size: 1.2rem;
-            color: #3b82f6;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #334155;
-            padding-top: 24px;
-            color: #94a3b8;
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .header {
-                padding: 30px 20px;
-            }
-
-            .logo-section {
-                flex-direction: column;
-                text-align: center;
-                gap: 12px;
-            }
-
-            .brand-text {
-                text-align: center;
-            }
-
-            .brand-name {
-                font-size: 1.5rem;
+            .container {
+                margin: 10px;
+                padding: 20px;
             }
             
-            .form-section {
-                padding: 30px 20px;
+            h1 {
+                font-size: 2.2em;
             }
             
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .section-content {
-                padding: 24px 20px;
-            }
-
-            .summary-grid,
-            .recommendation-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .footer {
-                padding: 40px 20px 20px;
-            }
-
-            .footer-brand {
-                flex-direction: column;
-                gap: 16px;
+            .calculator-badge {
+                font-size: 0.8em;
+                padding: 6px 12px;
             }
         }
     </style>
 </head>
 <body>
-    <div class=\"container\">
-        <header class=\"header\">
-            <div class=\"header-content\">
-                <div class=\"logo-section\">
-                    <div class=\"logo-icon\">
-                        <i class=\"fas fa-building\"></i>
-                    </div>
-                    <div class=\"brand-text\">
-                        <h1 class=\"brand-name\">IMÓVEL COM VALOR</h1>
-                        <div class=\"brand-tagline\">ASSESSORIA ESPECIALIZADA</div>
-                    </div>
-                </div>
-                
-                <div class=\"content-section\">
-                    <h2 class=\"main-title\">Hub de Análise Estratégica de Investimentos</h2>
-                    <p class=\"main-description\">Ferramenta completa para análise de viabilidade, recomendações e cenários em leilões de imóveis</p>
-                </div>
+    <div class="container">
+        <header>
+            <div class="calculator-badge">
+                Calculadora Aprimorada - Hub de Decisão Estratégica
             </div>
+            <h1>Imóvel com Valor</h1>
+            <p class="subtitle">ASSESSORIA ESPECIALIZADA</p>
+            <h2>Hub de Análise Estratégica de Investimentos</h2>
+            <p class="description">Ferramenta completa para análise de viabilidade, recomendações e cenários em leilões de imóveis.</p>
         </header>
 
-        <div class=\"form-section\">
-            <div class=\"section\">
-                <div class=\"section-header\">
-                    <i class=\"fas fa-chart-line\"></i>
-                    Dados Principais do Investimento
+        <form action="#" method="POST" id="calculadoraForm">
+            <fieldset>
+                <legend>Dados Principais do Investimento</legend>
+                
+                <div class="form-group">
+                    <label for="valorLimite">Valor limite para a Arrematação (R\$)</label>
+                    <input type="text" id="valorLimite" name="valorLimite" placeholder="Ex: 500.000,00" required>
                 </div>
-                <div class=\"section-content\">
-                    <div class=\"form-row\">
-                        <div class=\"form-group\">
-                            <label for=\"valorArrematacao\">Valor limite para a Arrematação (R$)</label>
-                            <input type=\"text\" id=\"valorArrematacao\" placeholder=\"Ex: R$ 500.000,00\">
-                        </div>
-                        
-                        <div class=\"form-group\">
-                            <label for=\"valorDisponivel\">Capital Total Disponível (R$)</label>
-                            <input type=\"text\" id=\"valorDisponivel\" placeholder=\"Ex: R$ 800.000,00\">
-                        </div>
-                    </div>
 
-                    <div class=\"form-row\">
-                        <div class=\"form-group\">
-                            <label for=\"valorVenal\">Valor Venal do Imóvel (R$)</label>
-                            <input type=\"text\" id=\"valorVenal\" placeholder=\"Para cálculo do ITBI\">
-                        </div>
-
-                        <div class=\"form-group\">
-                            <label for=\"cidade\">Localização do Imóvel</label>
-                            <select id=\"cidade\">
-                                <option value=\"curitiba\">Curitiba - PR</option>
-                                <option value=\"saopaulo\">São Paulo - SP</option>
-                                <option value=\"balneario\">Balneário Camboriú - SC</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="capitalDisponivel">Capital Total Disponível (R\$)</label>
+                    <input type="text" id="capitalDisponivel" name="capitalDisponivel" placeholder="Ex: 600.000,00" required>
                 </div>
-            </div>
 
-            <div class=\"section\">
-                <div class=\"section-header\">
-                    <i class=\"fas fa-target\"></i>
-                    Metas e Expectativas de Retorno
+                <div class="form-group">
+                    <label for="valorVenal">Valor Venal do Imóvel (R\$)</label>
+                    <input type="text" id="valorVenal" name="valorVenal" placeholder="Ex: 750.000,00" required>
                 </div>
-                <div class=\"section-content\">
-                    <div class=\"form-row\">
-                        <div class=\"form-group\">
-                            <label for=\"valorVendaEsperado\">Valor de Venda Esperado (R$)</label>
-                            <input type=\"text\" id=\"valorVendaEsperado\" placeholder=\"Ex: R$ 750.000,00\">
-                        </div>
-                        
-                        <div class=\"form-group\">
-                            <label for=\"roiMinimo\">ROI Mínimo Desejado (%)</label>
-                            <input type=\"number\" id=\"roiMinimo\" placeholder=\"Ex: 20\" step=\"0.1\">
-                        </div>
-                    </div>
 
-                    <div class=\"form-row\">
-                        <div class=\"form-group\">
-                            <label for=\"custoReforma\">Custo Estimado de Reforma (R$)</label>
-                            <input type=\"text\" id=\"custoReforma\" placeholder=\"Ex: R$ 50.000,00\">
-                        </div>
-
-                        <div class=\"form-group\">
-                            <label for=\"tempoVenda\">Tempo Estimado para Venda (meses)</label>
-                            <input type=\"number\" id=\"tempoVenda\" placeholder=\"Ex: 12\" min=\"1\" max=\"60\">
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="localizacao">Localização do Imóvel</label>
+                    <select id="localizacao" name="localizacao" required>
+                        <option value="">Selecione a localização</option>
+                        <option value="curitiba-pr">Curitiba - PR</option>
+                        <option value="sao-paulo-sp">São Paulo - SP</option>
+                        <option value="rio-de-janeiro-rj">Rio de Janeiro - RJ</option>
+                        <option value="belo-horizonte-mg">Belo Horizonte - MG</option>
+                        <option value="brasilia-df">Brasília - DF</option>
+                        <option value="salvador-ba">Salvador - BA</option>
+                        <option value="fortaleza-ce">Fortaleza - CE</option>
+                        <option value="recife-pe">Recife - PE</option>
+                        <option value="porto-alegre-rs">Porto Alegre - RS</option>
+                        <option value="goiania-go">Goiânia - GO</option>
+                        <option value="outras">Outras</option>
+                    </select>
                 </div>
-            </div>
+            </fieldset>
 
-            <div class=\"section\">
-                <div class=\"section-header\">
-                    <i class=\"fas fa-cogs\"></i>
-                    Configurações do Investimento
+            <fieldset>
+                <legend>Metas e Expectativas de Retorno</legend>
+                
+                <div class="form-group">
+                    <label for="valorVendaEsperado">Valor de Venda Esperado (R\$)</label>
+                    <input type="text" id="valorVendaEsperado" name="valorVendaEsperado" placeholder="Ex: 800.000,00" required>
                 </div>
-                <div class=\"section-content\">
-                    <div class=\"checkbox-group\">
-                        <div class=\"checkbox-item\">
-                            <input type=\"checkbox\" id=\"temOrcamentoReservado\">
-                            <label for=\"temOrcamentoReservado\">
-                                Possuo orçamento específico reservado para este leilão
-                                <small>Não aplicar margem de segurança de 30%</small>
-                            </label>
-                        </div>
-                        <div class=\"checkbox-item\">
-                            <input type=\"checkbox\" id=\"necessitaImissao\">
-                            <label for=\"necessitaImissao\">
-                                O imóvel necessitará de Imissão de Posse
-                                <small>Imóvel ocupado - custos adicionais com oficial de justiça</small>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <button class=\"calculate-btn\" onclick=\"calcularAnaliseCompleta()\">
-                <i class=\"fas fa-brain\"></i>
+                <div class="form-group">
+                    <label for="roiMinimo">ROI Mínimo Desejado (%)</label>
+                    <input type="text" id="roiMinimo" name="roiMinimo" placeholder="Ex: 15" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="custoReforma">Custo Estimado de Reforma (R\$)</label>
+                    <input type="text" id="custoReforma" name="custoReforma" placeholder="Ex: 50.000,00">
+                </div>
+
+                <div class="form-group">
+                    <label for="tempoVenda">Tempo Estimado para Venda (meses)</label>
+                    <input type="text" id="tempoVenda" name="tempoVenda" placeholder="Ex: 12" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Configurações do Investimento</legend>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="orcamentoEspecifico" name="orcamentoEspecifico" value="1">
+                    <label for="orcamentoEspecifico">Possuo orçamento específico reservado para este leilão</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="naoAplicarMargem" name="naoAplicarMargem" value="1">
+                    <label for="naoAplicarMargem">Não aplicar margem de segurança de 30%</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="imissaoPosse" name="imissaoPosse" value="1">
+                    <label for="imissaoPosse">O imóvel necessitará de Imissão de Posse</label>
+                </div>
+                <p class="help-text">Imóvel ocupado - custos adicionais com oficial de justiça</p>
+            </fieldset>
+
+            <button type="submit" class="submit-btn">
                 Gerar Análise Estratégica Completa
             </button>
+        </form>
 
-            <div id=\"resultado\" class=\"resultado\"></div>
-        </div>
+        <footer>
+            <h2>Imóvel com Valor</h2>
+            <p class="description-text">
+                Assessoria especializada em leilões de imóveis. Encontre segurança para uma análise personalizada e técnica, 
+                avaliação de viabilidade para dar lances e o suporte necessário para cada caso.
+            </p>
+            
+            <div class="contact-info">
+                <p><strong>Contato:</strong> <a href="mailto:contato@imovelcomvalor.com.br">contato@imovelcomvalor.com.br</a></p>
+                <p><strong>Instagram:</strong> <a href="https://instagram.com/imovelcomvalor"  rel="noopener noreferrer">@imovelcomvalor</a></p>
+            </div>
+            
+            <p class="copyright">&copy; 2020 Imóvel com Valor. Todos os direitos reservados.</p>
+        </footer>
     </div>
 
-    <footer class=\"footer\">
-        <div class=\"footer-content\">
-            <div class=\"footer-brand\">
-                <div class=\"footer-logo\">
-                    <i class=\"fas fa-building\"></i>
-                </div>
-                <h4>Imóvel com Valor</h4>
-            </div>
-            
-            <div class=\"footer-description\">
-                Assessoria especializada em leilões de imóveis. Encontre segurança para uma análise personalizada e técnica, avaliações de viabilidade para dar lances e o suporte necessário para cada caso.
-            </div>
-            
-            <div class=\"contact-info\">
-                <div class=\"contact-item\">
-                    <i class=\"fas fa-envelope\"></i>
-                    <span>contato@imovelcomvalor.com.br</span>
-                </div>
-                <div class=\"contact-item\">
-                    <i class=\"fab fa-instagram\"></i>
-                    <span>@imovelcomvalor</span>
-                </div>
-            </div>
-            
-            <div class=\"footer-bottom\">
-                © 2020 Imóvel com Valor. Todos os direitos reservados.
-            </div>
-        </div>
-    </footer>
-
     <script>
-        const taxasPorCidade = {
-            curitiba: {
-                nome: 'Curitiba - PR',
-                funrejus: 0.002,
-                oficialJustica: 800,
-                depositoJudicial: 3000,
-                itbiAliquota: 0.027,
-                registro: 1200
-            },
-            saopaulo: {
-                nome: 'São Paulo - SP',
-                funrejus: 0.002,
-                oficialJustica: 1200,
-                depositoJudicial: 5000,
-                itbiAliquota: 0.03,
-                registro: 1800
-            },
-            balneario: {
-                nome: 'Balneário Camboriú - SC',
-                funrejus: 0.002,
-                oficialJustica: 600,
-                depositoJudicial: 2500,
-                itbiAliquota: 0.02,
-                registro: 1600
-            }
-        };
-
-        const taxasFixas = {
-            leiloeiro: 0.05,
-            assessoria: 0.05,
-            escritura: 1500,
-            baixaPenhora: 600,
-            reservaSeguranca: 0.30
-        };
-
-        function formatarMoeda(valor) {
-            if (typeof valor === 'number') {
-                return valor.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
-            }
-            return 'R$ 0,00';
-        }
-
-        function formatarMoedaInput(input) {
-            let value = input.value.replace(/\\D/g, '');
-            
-            if (value === '') {
-                input.value = '';
-                return;
-            }
-            
-            value = parseInt(value);
-            const formatted = (value / 100).toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-            
-            input.value = formatted;
-        }
-
-        function parseCurrency(value) {
-            if (!value) return 0;
-            return parseFloat(value.replace(/[R$\\s.]/g, '').replace(',', '.')) || 0;
-        }
-
+        // Script básico para formatação de valores monetários
         document.addEventListener('DOMContentLoaded', function() {
-            const currencyInputs = [
-                'valorArrematacao',
-                'valorDisponivel',
-                'valorVenal',
-                'valorVendaEsperado',
-                'custoReforma'
-            ];
+            const camposMonetarios = ['valorLimite', 'capitalDisponivel', 'valorVenal', 'valorVendaEsperado', 'custoReforma'];
             
-            currencyInputs.forEach(id => {
-                const input = document.getElementById(id);
-                if (input) {
-                    input.addEventListener('input', function() {
-                        formatarMoedaInput(this);
+            camposMonetarios.forEach(function(campo) {
+                const elemento = document.getElementById(campo);
+                if (elemento) {
+                    elemento.addEventListener('input', function(e) {
+                        let valor = e.target.value.replace(/\D/g, '');
+                        valor = (valor / 100).toLocaleString('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        });
+                        e.target.value = valor;
                     });
                 }
+            });
+
+            // Formatação para percentual
+            const roiInput = document.getElementById('roiMinimo');
+            if (roiInput) {
+                roiInput.addEventListener('input', function(e) {
+                    let valor = e.target.value.replace(/\D/g, '');
+                    if (valor.length > 0) {
+                        e.target.value = valor + '%';
+                    }
+                });
+            }
+
+            // Validação do formulário
+            document.getElementById('calculadoraForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Formulário enviado! (Esta é uma demonstração - implemente a lógica de processamento conforme necessário)');
             });
         });
-
-        function calcularCustos(valorArrematacao, valorVenal, cidade, necessitaImissao) {
-            const taxasCidade = taxasPorCidade[cidade];
-            
-            const custoLeiloeiro = valorArrematacao * taxasFixas.leiloeiro;
-            const custoAssessoria = valorArrematacao * taxasFixas.assessoria;
-            const custoEscritura = taxasFixas.escritura;
-            const custoRegistro = taxasCidade.registro;
-            const custoBaixaPenhora = taxasFixas.baixaPenhora;
-            const custoITBI = valorVenal * taxasCidade.itbiAliquota;
-            const custoFunrejus = valorArrematacao * taxasCidade.funrejus;
-            
-            let custoImissaoPosse = 0;
-            if (necessitaImissao) {
-                custoImissaoPosse = taxasCidade.oficialJustica + taxasCidade.depositoJudicial;
-            }
-
-            const custosTotais = custoLeiloeiro + custoAssessoria + custoEscritura + 
-                                custoRegistro + custoBaixaPenhora + custoITBI + 
-                                custoFunrejus + custoImissaoPosse;
-
-            return {
-                custoLeiloeiro,
-                custoAssessoria,
-                custoEscritura,
-                custoRegistro,
-                custoBaixaPenhora,
-                custoITBI,
-                custoFunrejus,
-                custoImissaoPosse,
-                custosTotais
-            };
-        }
-
-        function calcularLanceMaximo(valorVendaEsperado, custoReforma, roiMinimo, cidade, valorVenal, necessitaImissao) {
-            // Cálculo iterativo para encontrar o lance máximo que atende ao ROI mínimo
-            let lanceMaximo = 0;
-            let incremento = 1000;
-            
-            for (let lance = incremento; lance <= valorVendaEsperado; lance += incremento) {
-                const custos = calcularCustos(lance, valorVenal || lance, cidade, necessitaImissao);
-                const investimentoTotal = lance + custos.custosTotais + custoReforma;
-                const lucroLiquido = valorVendaEsperado - investimentoTotal;
-                const roi = (lucroLiquido / investimentoTotal) * 100;
-                
-                if (roi >= roiMinimo) {
-                    lanceMaximo = lance;
-                } else {
-                    break;
-                }
-            }
-            
-            return lanceMaximo;
-        }
-
-        function gerarCenarios(valorVendaEsperado, custoReforma, cidade, valorVenal, necessitaImissao) {
-            const cenarios = [];
-            const incrementos = [0.7, 0.8, 0.9, 1.0, 1.1];
-            
-            incrementos.forEach(fator => {
-                const lance = Math.round(valorVendaEsperado * fator * 0.6); // Base aproximada
-                const custos = calcularCustos(lance, valorVenal || lance, cidade, necessitaImissao);
-                const investimentoTotal = lance + custos.custosTotais + custoReforma;
-                const lucroLiquido = valorVendaEsperado - investimentoTotal;
-                const roi = (lucroLiquido / investimentoTotal) * 100;
-                
-                cenarios.push({
-                    lance,
-                    investimentoTotal,
-                    lucroLiquido,
-                    roi,
-                    status: roi > 0 ? 'Positivo' : 'Negativo'
-                });
-            });
-            
-            return cenarios;
-        }
-
-        function calcularAnaliseCompleta() {
-            // Obter valores dos inputs
-            const valorArrematacao = parseCurrency(document.getElementById('valorArrematacao').value);
-            const valorDisponivel = parseCurrency(document.getElementById('valorDisponivel').value);
-            const valorVenal = parseCurrency(document.getElementById('valorVenal').value) || valorArrematacao;
-            const valorVendaEsperado = parseCurrency(document.getElementById('valorVendaEsperado').value);
-            const roiMinimo = parseFloat(document.getElementById('roiMinimo').value) || 20;
-            const custoReforma = parseCurrency(document.getElementById('custoReforma').value);
-            const tempoVenda = parseInt(document.getElementById('tempoVenda').value) || 12;
-            const cidade = document.getElementById('cidade').value;
-            const temOrcamentoReservado = document.getElementById('temOrcamentoReservado').checked;
-            const necessitaImissao = document.getElementById('necessitaImissao').checked;
-
-            // Validações
-            if (valorArrematacao <= 0) {
-                alert('Por favor, informe o valor limite para a arrematação.');
-                return;
-            }
-
-            if (valorDisponivel <= 0) {
-                alert('Por favor, informe o capital total disponível.');
-                return;
-            }
-
-            if (valorVendaEsperado <= 0) {
-                alert('Por favor, informe o valor de venda esperado.');
-                return;
-            }
-
-            // Cálculos principais
-            const custos = calcularCustos(valorArrematacao, valorVenal, cidade, necessitaImissao);
-            const investimentoTotal = valorArrematacao + custos.custosTotais + custoReforma;
-            const lucroLiquido = valorVendaEsperado - investimentoTotal;
-            const roi = (lucroLiquido / investimentoTotal) * 100;
-
-            // Capital disponível para investimento
-            let valorDisponivelInvestimento = valorDisponivel;
-            if (!temOrcamentoReservado) {
-                valorDisponivelInvestimento = valorDisponivel * (1 - taxasFixas.reservaSeguranca);
-            }
-
-            // Viabilidade
-            const isViavel = investimentoTotal <= valorDisponivelInvestimento;
-            const diferenca = valorDisponivelInvestimento - investimentoTotal;
-
-            // Lance máximo recomendado
-            const lanceMaximoRecomendado = calcularLanceMaximo(
-                valorVendaEsperado, 
-                custoReforma, 
-                roiMinimo, 
-                cidade, 
-                valorVenal, 
-                necessitaImissao
-            );
-
-            // Análise de cenários
-            const cenarios = gerarCenarios(valorVendaEsperado, custoReforma, cidade, valorVenal, necessitaImissao);
-
-            // Gerar resultado
-            exibirAnaliseCompleta({
-                // Dados básicos
-                valorArrematacao,
-                valorVendaEsperado,
-                custoReforma,
-                roiMinimo,
-                tempoVenda,
-                cidade: taxasPorCidade[cidade].nome,
-                necessitaImissao,
-                
-                // Custos
-                ...custos,
-                
-                // Métricas principais
-                investimentoTotal,
-                lucroLiquido,
-                roi,
-                
-                // Viabilidade
-                valorDisponivelInvestimento,
-                isViavel,
-                diferenca,
-                
-                // Recomendações
-                lanceMaximoRecomendado,
-                
-                // Cenários
-                cenarios
-            });
-        }
-
-        function exibirAnaliseCompleta(dados) {
-            const resultadoDiv = document.getElementById('resultado');
-            
-            // Determinar status e alertas
-            let statusInvestimento = '';
-            let alertas = [];
-            
-            if (dados.roi >= dados.roiMinimo && dados.isViavel) {
-                statusInvestimento = 'EXCELENTE OPORTUNIDADE';
-                alertas.push({
-                    type: 'success',
-                    icon: 'fas fa-check-circle',
-                    message: `Investimento atende ao ROI mínimo de ${dados.roiMinimo}% e está dentro do orçamento disponível.`
-                });
-            } else if (dados.roi >= dados.roiMinimo && !dados.isViavel) {
-                statusInvestimento = 'BOA OPORTUNIDADE - REQUER CAPITAL ADICIONAL';
-                alertas.push({
-                    type: 'warning',
-                    icon: 'fas fa-exclamation-triangle',
-                    message: `ROI atrativo, mas faltam ${formatarMoeda(Math.abs(dados.diferenca))} no orçamento.`
-                });
-            } else if (dados.roi < dados.roiMinimo && dados.isViavel) {
-                statusInvestimento = 'INVESTIMENTO ABAIXO DA META';
-                alertas.push({
-                    type: 'warning',
-                    icon: 'fas fa-chart-line-down',
-                    message: `ROI de ${dados.roi.toFixed(2)}% está abaixo da meta de ${dados.roiMinimo}%.`
-                });
-            } else {
-                statusInvestimento = 'INVESTIMENTO NÃO RECOMENDADO';
-                alertas.push({
-                    type: 'danger',
-                    icon: 'fas fa-times-circle',
-                    message: 'Investimento não atende aos critérios de ROI e orçamento.'
-                });
-            }
-
-            // Comparação com lance recomendado
-            if (dados.lanceMaximoRecomendado > 0) {
-                const diferencaLance = dados.valorArrematacao - dados.lanceMaximoRecomendado;
-                if (diferencaLance > 0) {
-                    alertas.push({
-                        type: 'info',
-                        icon: 'fas fa-info-circle',
-                        message: `Seu lance está ${formatarMoeda(diferencaLance)} acima do recomendado para atingir o ROI desejado.`
-                    });
-                } else {
-                    alertas.push({
-                        type: 'success',
-                        icon: 'fas fa-thumbs-up',
-                        message: `Seu lance está dentro da faixa recomendada para o ROI desejado.`
-                    });
-                }
-            }
-
-            // Margem de segurança
-            const margemSeguranca = (dados.diferenca / dados.valorDisponivelInvestimento) * 100;
-            if (margemSeguranca > 20) {
-                alertas.push({
-                    type: 'success',
-                    icon: 'fas fa-shield-alt',
-                    message: `Excelente margem de segurança de ${margemSeguranca.toFixed(1)}%.`
-                });
-            } else if (margemSeguranca > 0) {
-                alertas.push({
-                    type: 'warning',
-                    icon: 'fas fa-exclamation-triangle',
-                    message: `Margem de segurança baixa: ${margemSeguranca.toFixed(1)}%.`
-                });
-            }
-
-            let html = `
-                <div class=\"resultado-header\">
-                    <h3><i class=\"fas fa-brain\"></i> Análise Estratégica Completa</h3>
-                    <p>Relatório detalhado para ${dados.cidade} • Status: ${statusInvestimento}</p>
-                </div>
-                
-                <div class=\"resultado-content\">
-                    <!-- RESUMO EXECUTIVO -->
-                    <div class=\"executive-summary\">
-                        <h4><i class=\"fas fa-chart-pie\"></i> RESUMO EXECUTIVO</h4>
-                        <div class=\"summary-grid\">
-                            <div class=\"summary-item\">
-                                <div class=\"label\">Valor de Venda Final Líquido</div>
-                                <div class=\"value\">${formatarMoeda(dados.valorVendaEsperado)}</div>
-                            </div>
-                            <div class=\"summary-item\">
-                                <div class=\"label\">Lucro Líquido Real</div>
-                                <div class=\"value\" style=\"color: ${dados.lucroLiquido >= 0 ? '#15803d' : '#dc2626'}\">${formatarMoeda(dados.lucroLiquido)}</div>
-                            </div>
-                            <div class=\"summary-item roi\">
-                                <div class=\"label\">ROI - Retorno sobre Investimento</div>
-                                <div class=\"value\">${dados.roi.toFixed(2)}%</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RECOMENDAÇÕES E METAS -->
-                    <div class=\"recommendations\">
-                        <h4><i class=\"fas fa-bullseye\"></i> RECOMENDAÇÕES E METAS</h4>
-                        <div class=\"recommendation-grid\">
-                            <div class=\"recommendation-item\">
-                                <div class=\"label\">Lance Máximo Recomendado</div>
-                                <div class=\"value\">${dados.lanceMaximoRecomendado > 0 ? formatarMoeda(dados.lanceMaximoRecomendado) : 'N/A'}</div>
-                            </div>
-                            <div class=\"recommendation-item\">
-                                <div class=\"label\">ROI Mínimo Desejado</div>
-                                <div class=\"value\">${dados.roiMinimo}%</div>
-                            </div>
-                            <div class=\"recommendation-item\">
-                                <div class=\"label\">ROI Real com Seu Lance</div>
-                                <div class=\"value\" style=\"color: ${dados.roi >= dados.roiMinimo ? '#15803d' : '#dc2626'}\">${dados.roi.toFixed(2)}%</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ALERTAS E INSIGHTS -->
-                    <div class=\"alerts-insights\">
-                        <h4><i class=\"fas fa-lightbulb\"></i> ALERTAS E INSIGHTS</h4>
-                        ${alertas.map(alerta => `
-                            <div class=\"alert alert-${alerta.type}\">
-                                <i class=\"${alerta.icon}\"></i>
-                                ${alerta.message}
-                            </div>
-                        `).join('')}
-                    </div>
-                    <!-- ANÁLISE DE CENÁRIOS -->
-                    <div class="scenario-analysis">
-                        <h4><i class="fas fa-chart-area"></i> ANÁLISE DE CENÁRIOS</h4>
-                        <div class="scenario-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Valor do Lance</th>
-                                        <th>Investimento Total</th>
-                                        <th>Lucro Líquido</th>
-                                        <th>ROI (%)</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${dados.cenarios.map(cenario => `
-                                        <tr>
-                                            <td>${formatarMoeda(cenario.lance)}</td>
-                                            <td>${formatarMoeda(cenario.investimentoTotal)}</td>
-                                            <td style="color: ${cenario.lucroLiquido >= 0 ? '#15803d' : '#dc2626'}">${formatarMoeda(cenario.lucroLiquido)}</td>
-                                            <td class="${cenario.roi >= 0 ? 'roi-positive' : 'roi-negative'}">${cenario.roi.toFixed(2)}%</td>
-                                            <td>${cenario.status}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- DETALHAMENTO DE CUSTOS -->
-                    <div class="resultado-grid">
-                        <h4 style="margin-bottom: 20px; color: #1e293b;"><i class="fas fa-calculator"></i> Detalhamento de Custos</h4>
-                        
-                        <div class="resultado-item">
-                            <span class="label">💰 Valor limite para a Arrematação:</span>
-                            <span class="value">${formatarMoeda(dados.valorArrematacao)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">🏛️ Taxa do Leiloeiro (5%):</span>
-                            <span class="value">${formatarMoeda(dados.custoLeiloeiro)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">👨‍💼 Assessoria Especializada (5%):</span>
-                            <span class="value">${formatarMoeda(dados.custoAssessoria)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">📄 Taxa de Escritura:</span>
-                            <span class="value">${formatarMoeda(dados.custoEscritura)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">📋 Taxa de Registro:</span>
-                            <span class="value">${formatarMoeda(dados.custoRegistro)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">🔓 Baixa Penhora Matrícula:</span>
-                            <span class="value">${formatarMoeda(dados.custoBaixaPenhora)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">🏢 ITBI (Imposto de Transmissão):</span>
-                            <span class="value">${formatarMoeda(dados.custoITBI)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">⚖️ FUNREJUS:</span>
-                            <span class="value">${formatarMoeda(dados.custoFunrejus)}</span>
-                        </div>
-                        
-                        ${dados.custoImissaoPosse > 0 ? `
-                        <div class="resultado-item">
-                            <span class="label">🏠 Imissão de Posse:</span>
-                            <span class="value">${formatarMoeda(dados.custoImissaoPosse)}</span>
-                        </div>
-                        ` : ''}
-                        
-                        ${dados.custoReforma > 0 ? `
-                        <div class="resultado-item">
-                            <span class="label">🔨 Custo de Reforma:</span>
-                            <span class="value">${formatarMoeda(dados.custoReforma)}</span>
-                        </div>
-                        ` : ''}
-                        
-                        <div class="resultado-item">
-                            <span class="label">💼 Total de Custos Adicionais:</span>
-                            <span class="value">${formatarMoeda(dados.custosTotais)}</span>
-                        </div>
-                        
-                        <div class="resultado-item total">
-                            <span class="label">🎯 INVESTIMENTO TOTAL NECESSÁRIO:</span>
-                            <span class="value">${formatarMoeda(dados.investimentoTotal)}</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">�� Capital Disponível p/ Investimento:</span>
-                            <span class="value">${formatarMoeda(dados.valorDisponivelInvestimento)}</span>
-                        </div>
-                        
-                        <div class="resultado-item total">
-                            <span class="label" style="color: ${dados.diferenca >= 0 ? '#166534' : '#dc2626'}">
-                                ${dados.diferenca >= 0 ? '💰 Reserva de Segurança:' : '⚠️ Déficit de Capital:'}
-                            </span>
-                            <span class="value" style="color: ${dados.diferenca >= 0 ? '#166534' : '#dc2626'}">
-                                ${formatarMoeda(Math.abs(dados.diferenca))}
-                            </span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">⏱️ Tempo Estimado para Venda:</span>
-                            <span class="value">${dados.tempoVenda} meses</span>
-                        </div>
-                        
-                        <div class="resultado-item">
-                            <span class="label">📊 Margem de Segurança:</span>
-                            <span class="value">${margemSeguranca.toFixed(1)}%</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            resultadoDiv.innerHTML = html;
-            resultadoDiv.classList.add('show');
-            resultadoDiv.scrollIntoView({ behavior: 'smooth' });
-        }
     </script>
 </body>
 </html>
-                    <div class=\"scenario-analysis\">
-                        <h4><i class=\"fas fa-chart-
