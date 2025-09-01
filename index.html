@@ -21,7 +21,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, #2a303f 0%, #1e2530 100%);
             color: white;
@@ -101,7 +100,6 @@
             line-height: 1.5;
         }
 
-        /* Form Section */
         .form-section {
             padding: 50px 40px;
             background: #fafafa;
@@ -228,7 +226,6 @@
             margin-top: 4px;
         }
 
-        /* Calculate Button */
         .calculate-btn {
             width: 100%;
             padding: 20px;
@@ -258,7 +255,6 @@
             font-size: 1.2rem;
         }
 
-        /* Results Section */
         .resultado {
             background: white;
             border-radius: 16px;
@@ -308,7 +304,6 @@
             padding: 32px 28px;
         }
 
-        /* Executive Summary */
         .executive-summary {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             border: 2px solid #0ea5e9;
@@ -371,7 +366,6 @@
             color: #15803d;
         }
 
-        /* Recommendations */
         .recommendations {
             background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
             border: 2px solid #f59e0b;
@@ -421,7 +415,6 @@
             color: #d97706;
         }
 
-        /* Alerts and Insights */
         .alerts-insights {
             margin-bottom: 32px;
         }
@@ -480,7 +473,6 @@
             border-color: #3b82f6;
         }
 
-        /* Scenario Analysis */
         .scenario-analysis {
             background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
             border: 2px solid #8b5cf6;
@@ -542,7 +534,6 @@
             font-weight: 700;
         }
 
-        /* Detailed Results */
         .resultado-grid {
             display: grid;
             gap: 16px;
@@ -583,7 +574,6 @@
             font-size: 1.05em;
         }
 
-        /* Footer */
         .footer {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
@@ -684,7 +674,6 @@
             font-size: 14px;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .header {
                 padding: 30px 20px;
@@ -1268,4 +1257,6 @@
                                         <tr>
                                             <td>${formatarMoeda(cenario.lance)}</td>
                                             <td>${formatarMoeda(cenario.investimentoTotal)}</td>
-                                            <td style="color: ${cenario.lucroLiquido >= 0 ? '#15803d' : '#dc2
+                                            <td style="color: ${cenario.lucroLiquido >= 0 ? '#15803d' : '#dc2626'}">${formatarMoeda(cenario.lucroLiquido)}</td>
+                                            <td class="${cenario.roi >= 0 ? 'roi-positive' : 'roi-negative'}">${cenario.roi.toFixed(2)}%</td>
+                                            <t
